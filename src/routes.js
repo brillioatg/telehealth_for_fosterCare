@@ -13,6 +13,7 @@ const Upload = React.lazy(() => import('./views/records/upload'));
 const Continuous = React.lazy(() => import('./views/insights/continuous'));
 const Preventive = React.lazy(() => import('./views/insights/Preventive'));
 const Device = React.lazy(() => import('./views/device/Device'));
+const Notification = React.lazy(() => import('./views/notifications/calendar'));
 const AmbulanceService = React.lazy(() => import('./views/services/AmbulanceService'));
 const AmbulanceInform = React.lazy(() => import('./views/services/AmbulanceInform'));
 const Ambulancedetails = React.lazy(() => import('./views/services/AmbulanceDetails'));
@@ -31,7 +32,8 @@ const routes = [
   { path: '/reports/report2', name: 'Report2', component: Reports2 },
   { path: '/reports/report3', name: 'Report3', component: Reports3 },
   { path: '/reports/report4', name: 'Report4', component: Reports4 },
-  { path: '/reports/report5', name: 'Report5', component: Reports5 },
+  { path: '/reports/report5', name: 'Report5', component: Reports5 },  
+  { path: '/notifications', name: 'Notifications', component: Notification },
   { path: '/services/ambulance', name: 'AmbulanceService', component: AmbulanceService },
   { path: '/services/ambulanceinfo', name: 'AmbulanceInfo', component: AmbulanceInform },
   { path: '/services/ambulancedetails', name: 'Ambulancedetails', component: Ambulancedetails}

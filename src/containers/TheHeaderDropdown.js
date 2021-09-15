@@ -9,6 +9,7 @@ import {
 } from '@coreui/react'
 import CIcon from '@coreui/icons-react'
 import Avatar from '@material-ui/core/Avatar';
+import img from './1.jpg'
 
 const TheHeaderDropdown = () => {
   return (
@@ -19,7 +20,7 @@ const TheHeaderDropdown = () => {
     >
       <CDropdownToggle className="c-header-nav-link" caret={false}>
         <div className="c-avatar">
-          <Avatar src="/broken-image.jpg" style={{backgroundColor:'blue'}}/>
+        <Avatar alt="Remy Sharp" src={img} />
         </div>
       </CDropdownToggle>
       <CDropdownMenu className="pt-0" placement="bottom-end">

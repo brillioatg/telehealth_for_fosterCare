@@ -14,6 +14,8 @@ import {useHistory} from "react-router-dom";
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 import {withStyles } from '@material-ui/core/styles';
+import Avatar from '@material-ui/core/Avatar';
+import { BsFillPersonFill } from "react-icons/bs";
 
 export default function Row(props) {
 
@@ -71,7 +73,8 @@ export default function Row(props) {
       </TableCell> 
       
       {/* <TableCell>{row.id}</TableCell> */}
-      <TableCell align="left" component="th" scope="row">
+      <TableCell align="left" component="th" scope="row" style={{width:"25%"}}>
+      <BsFillPersonFill size={25}/> &nbsp;&nbsp;
         <a
             onClick={(e) => { redirectToPatientDetails(e, row.id)}}
             target="_blank"
@@ -82,7 +85,7 @@ export default function Row(props) {
             {row.name}
         </a>
       </TableCell>
-      <StyledTableCell align="left" >{row.address},{row.city},{row.state},{row.postalCode},{row.country}</StyledTableCell>
+      <StyledTableCell align="left" >{row.address},{row.state},{row.postalCode},{row.country}</StyledTableCell>
       <StyledTableCell align="left">{row.age}</StyledTableCell>
       <StyledTableCell align="left" style={{width:'150px'}}>{row.phone}</StyledTableCell>
       <StyledTableCell align="left">{displayCheckedBox(row.id)}</StyledTableCell>
@@ -114,7 +117,7 @@ export default function Row(props) {
                   
                   <StyledTableRow key={item.id}>
                     {/* <TableCell component="th" scope="row">{item.id}</TableCell> */}
-                    <StyledTableCell style={{width:"25%"}}>{item.provider_name}</StyledTableCell>
+                    <StyledTableCell style={{width:"25%"}}> {item.provider_name}</StyledTableCell>
                     <StyledTableCell>{item.doctor}</StyledTableCell>
                     <StyledTableCell>{item.disease}</StyledTableCell>
                     <StyledTableCell style={{width:"15%"}}>{item.period.start}</StyledTableCell>

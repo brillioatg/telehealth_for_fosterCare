@@ -28,6 +28,7 @@ import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import DepartureBoardIcon from '@material-ui/icons/DepartureBoard';
 import AirlineSeatIndividualSuiteIcon from '@material-ui/icons/AirlineSeatIndividualSuite';
+import Maps from './Maps'
 
   const useStyles = makeStyles((theme) => ({
 	typography: {
@@ -180,7 +181,7 @@ export default function PatientDetails(props) {
             </h4>
             <div>
             {/* <img src={location2} alt="Ambulance" width="85%" height="333"/> */}
-                {displaygraph(driverid)} <br/><br/><br/>
+                {/* {displaygraph(driverid)} <br/><br/><br/> */}
                 {/* <Map 
                     google={props.google} 
                     zoom={10}
@@ -189,6 +190,8 @@ export default function PatientDetails(props) {
                         lng: -120.7060049
                     }}
                     style={{width: '1200px', height: '300px'}} */}
+
+                    <Maps/>
                 
             </div>
 		</section>

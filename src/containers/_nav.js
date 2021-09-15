@@ -96,7 +96,7 @@ const _nav =  [
   {
     _tag: 'CSidebarNavItem',
     name: 'Video Consultation',
-    to: '/notification',
+    to: '/notifications',
     icon: 'cil-pencil',
     badge: {
       color: 'warning',

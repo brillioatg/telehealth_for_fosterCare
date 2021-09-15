@@ -51,10 +51,10 @@ export default function PatientInform() {
       margin: '10px',
       float: 'right',
       boxShadow: '-4px 8px 20px 0px grey',
-      width: '25%',
+      width: '100%',
       [theme.breakpoints.up('sm')]: {
         marginLeft: theme.spacing(1),
-        width: '25%',
+        width: '98%',
       },
     },
     searchIcon: {
@@ -76,7 +76,7 @@ export default function PatientInform() {
       transition: theme.transitions.create('width'),
       width: '100%',
       [theme.breakpoints.up('sm')]: {
-        width: '17ch',
+        width: '100ch',
         '&:focus': {
           width: '20ch',
         },
