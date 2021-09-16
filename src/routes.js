@@ -13,7 +13,7 @@ const Upload = React.lazy(() => import('./views/records/upload'));
 const Continuous = React.lazy(() => import('./views/insights/continuous'));
 const Preventive = React.lazy(() => import('./views/insights/Preventive'));
 const Device = React.lazy(() => import('./views/device/Device'));
-const Notification = React.lazy(() => import('./views/notifications/calendar'));
+const Notification = React.lazy(() => import('./views/notifications/calendar.jsx'));
 const AmbulanceService = React.lazy(() => import('./views/services/AmbulanceService'));
 const AmbulanceInform = React.lazy(() => import('./views/services/AmbulanceInform'));
 const Ambulancedetails = React.lazy(() => import('./views/services/AmbulanceDetails'));

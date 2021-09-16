@@ -4,7 +4,7 @@ import Table from 'react-bootstrap/Table';
 // import 'bootstrap/dist/css/bootstrap.min.css';
 import LoadingOverlay from 'react-loading-overlay';
 import {Link} from "react-router-dom";
-import { Button} from 'antd';
+// import { Button} from 'antd';
 import Upload from './upload'
 import "./dashboard.scss";
 import {InfoCircleOutlined} from '@ant-design/icons';
@@ -273,13 +273,13 @@ export default function PatientDetails() {
 		  if(id === "d4a30d91-8283-eddc-799c-d3131f7cf2d7" || id === "5be71bc3-c641-111b-bc57-2fb9b58eba8d")
 		  {
 			return (
-				<Button type="primary">View Insights</Button>
+				<button type="button" class="btn btn-primary">View Insights</button>
 				
 			)
 		  }
 		  else{
 			return(
-			  	<Button style={{backgroundColor:"#dee2e6", color:"black"}} disabled>View Insights</Button>
+			  	<button type="button" class="btn btn-primary" style={{color:"black"}} disabled>View Insights</button>
 				 
 			)
 		  }
@@ -289,13 +289,13 @@ export default function PatientDetails() {
 		if(id === "d4a30d91-8283-eddc-799c-d3131f7cf2d7" || id === "5be71bc3-c641-111b-bc57-2fb9b58eba8d")
 		{
 		  return (
-			<Button type="primary">View Notifications</Button>
+			<button type="button" class="btn btn-primary">View Notifications</button>
 		  )
 		}
 		else
 		{
 			return (
-				<Button style={{backgroundColor:"#dee2e6", color:"black"}} disabled>View Notifications</Button>
+				<button type="button" class="btn btn-primary" style={{color:"black"}} disabled>View Notifications</button>
 			  )
 		}
 	}

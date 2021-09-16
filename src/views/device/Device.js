@@ -53,8 +53,7 @@ export default function Device() {
       }
 
     const rows = [
-        createData('Oxygen and Temperature',"Arthur650 Ortiz186"),
-        createData('Oxygen and Temperature',"Cristy798 Wiegand701"),
+        createData('Oxygen and Temperature',"Abigail677_Harvey63")
       ]
 
     return (
@@ -97,7 +96,7 @@ export default function Device() {
         <CWidgetDropdown
           color="gradient-primary"
           header="Oxygen"
-          text="Min:80  Max:106"
+          text="Min:85  Max:106"
           footerSlot={
             <ChartLineSimple
               pointed
@@ -117,7 +116,7 @@ export default function Device() {
         <CWidgetDropdown
           color="gradient-info"
           header="Temperature"
-          text="Min:94  Max: 106"
+          text="Min:100  Max: 105"
           footerSlot={
             <ChartLineSimple
               pointed

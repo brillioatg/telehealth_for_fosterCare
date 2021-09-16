@@ -144,7 +144,7 @@ export default function PatientInform() {
 
            <center>
               <Link className="form-group col-md-20" to="/services/ambulanceinfo">
-                <Button type="primary">More Details</Button>
+                <button type="button" class="btn btn-primary">More Details</button>
               </Link>
             </center>
             {/* </Content>
