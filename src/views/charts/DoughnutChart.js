@@ -18,7 +18,7 @@ import {
 const Charts = () => {
 
   return (
-    <CCardGroup columns className = "cols-2" style={{width:'90%', float:'left'}}>
+    <CCardGroup columns className = "cols-2" style={{width:'90%'}}>
       {/* <CCard>
         <CCardHeader>
           Bar Chart
@@ -43,9 +43,9 @@ const Charts = () => {
         </CCardBody>
       </CCard> */}
 
-      <CCard>
+      {/* <CCard>
         <CCardHeader style={{backgroundColor:'#0A2533', color:'white'}}>
-        <h3> AWS - Continuous Care</h3>
+        <h2> AWS - Continuous Care</h2>
         </CCardHeader>
         <CCardBody style={{backgroundColor:'#0A2533', color:'white'}}>
           <CChartLine
@@ -71,13 +71,13 @@ const Charts = () => {
             labels={['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su']}
           />
         </CCardBody>
-      </CCard>
+      </CCard> */}
 
-      {/* <CCard>
-        <CCardHeader>
-          Doughnut Chart
+      <CCard>
+        <CCardHeader style={{backgroundColor:'#0A2533', color:'white'}}>
+         <h3>Preventive Care</h3> 
         </CCardHeader>
-        <CCardBody>
+        <CCardBody style={{backgroundColor:'#0A2533', color:'white'}}>
           <CChartDoughnut
             datasets={[
               {
@@ -90,7 +90,7 @@ const Charts = () => {
                 data: [40, 20, 80, 10]
               }
             ]}
-            labels={['VueJs', 'EmberJs', 'ReactJs', 'AngularJs']}
+            labels={['Diagnosis', 'Encounters', 'Observations', 'Analysis']}
             options={{
               tooltips: {
                 enabled: true
@@ -98,7 +98,7 @@ const Charts = () => {
             }}
           />
         </CCardBody>
-      </CCard> */}
+      </CCard>
 
       {/* <CCard>
         <CCardHeader>

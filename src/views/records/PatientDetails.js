@@ -1,12 +1,12 @@
 import React , {useEffect, useState} from 'react';
 import {useHistory, useLocation} from "react-router-dom";
 import Table from 'react-bootstrap/Table';
-// import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import LoadingOverlay from 'react-loading-overlay';
 import {Link} from "react-router-dom";
 // import { Button} from 'antd';
 import Upload from './upload'
-import "./dashboard.scss";
+// import "./dashboard.scss";
 import {InfoCircleOutlined} from '@ant-design/icons';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
