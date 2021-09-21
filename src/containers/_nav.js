@@ -12,13 +12,13 @@ const _nav =  [
     _tag: 'CSidebarNavItem',
     name: 'Patients',
     to: '/records/patients',
-    icon: 'cil-drop',
+    icon: 'cil-group',
   },
   {
     _tag: 'CSidebarNavItem',
     name: 'Providers',
     to: '/records/providers',
-    icon: 'cil-pencil',
+    icon: 'cil-hospital',
   },
   {
     _tag: 'CSidebarNavDropdown',
@@ -79,7 +79,7 @@ const _nav =  [
     _tag: 'CSidebarNavItem',
     name: 'Device Management',
     to: '/device/devices',
-    icon: 'cil-pencil',
+    icon: 'cil-monitor',
   },
   {
     _tag: 'CSidebarNavTitle',
@@ -89,7 +89,7 @@ const _nav =  [
     _tag: 'CSidebarNavItem',
     name: 'Video Consultation',
     to: '/notifications',
-    icon: 'cil-pencil',
+    icon: 'cil-bell',
     badge: {
       color: 'warning',
       text: '1',
@@ -103,7 +103,7 @@ const _nav =  [
     _tag: 'CSidebarNavItem',
     name: 'Ambulance Service',
     to: '/services/ambulance',
-    icon: 'cil-pencil',
+    icon: 'cil-bus-alt',
   },
 ]
 
