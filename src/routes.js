@@ -27,7 +27,7 @@ const routes = [
   // { path: '/records/upload', name: 'upload', component: Upload, exact: true },
   { path: '/insights/continuous', name: 'insights', component: Continuous, exact: true },
   { path: '/insights/preventive', name: 'insights', component: Preventive, exact: true },
-  // { path: '/device/devices', name: 'Devices', component: Device, exact: true },
+  { path: '/device/devices', name: 'Devices', component: Device, exact: true },
   // { path: '/reports/reports', name: 'Reports', component: Reports, exact: true },
   // { path: '/reports/report2', name: 'Report2', component: Reports2, exact: true },
   // { path: '/reports/report3', name: 'Report3', component: Reports3, exact: true },
