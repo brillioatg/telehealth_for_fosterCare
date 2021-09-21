@@ -39,6 +39,8 @@ import {
 import {
   cilAlignCenter,
   cilAlignLeft,
+  cilHospital,
+  cilGroup,
   cilAlignRight,
   cilApplicationsSettings,
   cilArrowRight,
@@ -137,6 +139,8 @@ export const icons = Object.assign({}, {
 }, {
   cilAlignCenter,
   cilAlignLeft,
+  cilGroup,
+  cilHospital,
   cilAlignRight,
   cilApplicationsSettings,
   cilArrowRight,

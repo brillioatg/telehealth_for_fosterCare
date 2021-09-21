@@ -79,7 +79,7 @@ const _nav =  [
     _tag: 'CSidebarNavItem',
     name: 'Device Management',
     to: '/device/devices',
-    icon: 'cil-monitor',
+    icon: 'cil-calculator',
   },
   {
     _tag: 'CSidebarNavTitle',
@@ -103,7 +103,7 @@ const _nav =  [
     _tag: 'CSidebarNavItem',
     name: 'Ambulance Service',
     to: '/services/ambulance',
-    icon: 'cil-bus-alt',
+    icon: 'cil-location-pin',
   },
 ]
 
