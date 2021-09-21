@@ -18,7 +18,7 @@ import {
 const Charts = () => {
 
   return (
-    <CCardGroup columns className = "cols-2" style={{width:'90%', float:'left'}}>
+    <CCardGroup>
       {/* <CCard>
         <CCardHeader>
           Bar Chart
@@ -42,7 +42,7 @@ const Charts = () => {
           />
         </CCardBody>
       </CCard> */}
-    <a href="https://us-east-1.quicksight.aws.amazon.com/sn/dashboards/48be7a89-9b91-4b84-9154-545472a06a73/views/0e87f279-51a8-4e8d-83b6-42bcfe2d0d05" target="_blank"> 
+    {/* <a href="https://us-east-1.quicksight.aws.amazon.com/sn/dashboards/48be7a89-9b91-4b84-9154-545472a06a73/views/0e87f279-51a8-4e8d-83b6-42bcfe2d0d05" target="_blank">  */}
       <CCard>
         <CCardHeader style={{backgroundColor:'#0A2533', color:'white'}}>
         <h3>Continuous Care</h3>
@@ -53,14 +53,14 @@ const Charts = () => {
               {
                 label: 'Oxygen',
                 backgroundColor: 'rgb(252, 133, 13)',
-                color: 'white',
-                data: [30, 39, 10, 50, 30, 70, 35]
+                color: 'rgb(0,0,0)',
+                data: [80, 89, 90, 88, 106, 87, 83]
               },
               {
                 label: 'Temperature',
                 backgroundColor: 'rgb(10, 135, 175)',
                 color: 'white',
-                data: [39, 80, 40, 35, 40, 20, 45]
+                data: [89, 80, 100, 105, 90, 96, 85]
               }
             ]}
             options={{
@@ -72,7 +72,6 @@ const Charts = () => {
           />
         </CCardBody>
       </CCard>
-      </a>
 
       {/* <CCard>
         <CCardHeader>

@@ -21,22 +21,22 @@ const _nav =  [
     icon: 'cil-pencil',
   },
   {
-    _tag: 'CSidebarNavItem',
+    _tag: 'CSidebarNavDropdown',
     name: 'Care Insights',
-    to: '/insights/continuous',
+    route: '/insights',
     icon: 'cil-puzzle',
-    // _children: [
-    //   {
-    //     _tag: 'CSidebarNavItem',
-    //     name: 'Continuous Care',
-    //     to: '/insights/continuous',
-    //   },
-    //   {
-    //     _tag: 'CSidebarNavItem',
-    //     name: 'Preventive care',
-    //     to: '/insights/preventive',
-    //   }
-    // ]
+    _children: [
+      {
+        _tag: 'CSidebarNavItem',
+        name: 'Continuous Care',
+        to: '/insights/continuous',
+      },
+      {
+        _tag: 'CSidebarNavItem',
+        name: 'Preventive care',
+        to: '/insights/preventive',
+      }
+    ]
   },
   {
     _tag: 'CSidebarNavDropdown',
