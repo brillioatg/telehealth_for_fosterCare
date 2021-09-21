@@ -102,9 +102,9 @@ export default function Device() {
               pointed
               className="c-chart-wrapper mt-3 mx-3"
               style={{height: '70px'}}
-              dataPoints={[65, 59, 84, 84, 51, 55, 40]}
+              dataPoints={[85, 90, 84, 80, 92, 96, 80]}
               pointHoverBackgroundColor="primary"
-              label="Members"
+              label="Oxygen"
               labels="months"
             />
           }
@@ -122,10 +122,10 @@ export default function Device() {
               pointed
               className="mt-3 mx-3"
               style={{height: '70px'}}
-              dataPoints={[1, 18, 9, 17, 34, 22, 11]}
+              dataPoints={[80, 107, 109, 87, 110, 90, 102]}
               pointHoverBackgroundColor="info"
               options={{ elements: { line: { tension: 0.00001 }}}}
-              label="Members"
+              label="Temperature"
               labels="months"
             />
           }

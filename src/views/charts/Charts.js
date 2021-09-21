@@ -42,10 +42,10 @@ const Charts = () => {
           />
         </CCardBody>
       </CCard> */}
-
+    <a href="https://us-east-1.quicksight.aws.amazon.com/sn/dashboards/48be7a89-9b91-4b84-9154-545472a06a73/views/0e87f279-51a8-4e8d-83b6-42bcfe2d0d05" target="_blank"> 
       <CCard>
         <CCardHeader style={{backgroundColor:'#0A2533', color:'white'}}>
-        <h3> AWS - Continuous Care</h3>
+        <h3>Continuous Care</h3>
         </CCardHeader>
         <CCardBody style={{backgroundColor:'#0A2533', color:'white'}}>
           <CChartLine
@@ -72,6 +72,7 @@ const Charts = () => {
           />
         </CCardBody>
       </CCard>
+      </a>
 
       {/* <CCard>
         <CCardHeader>

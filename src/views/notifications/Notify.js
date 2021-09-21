@@ -8,7 +8,7 @@ export default function Notify(){
     const [data, setdata] = useState([]);
 
     const notify = ()=>{
-        toast.warning( "Meeting with Patient Abigail677_Harvey63");
+        toast.warning("Meeting with Patient Abigail677_Harvey63");
     }
 
     useEffect(()=>{
@@ -28,7 +28,7 @@ export default function Notify(){
         notify()
     },[])
     return (
-        <div className="GeeksforGeeks">
+        <div className="notify">
             {/* <button onClick={notify}>Click Me!</button> */}
             </div>
     );
