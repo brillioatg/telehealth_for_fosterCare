@@ -1,11 +1,11 @@
 import React , {useEffect, useState} from 'react';
 import {useLocation} from "react-router-dom";
-import 'bootstrap/dist/css/bootstrap.min.css';
+// import 'bootstrap/dist/css/bootstrap.min.css';
 import LoadingOverlay from 'react-loading-overlay';
 import {Link} from "react-router-dom";
-import "./dashboard.scss";
+// import "./dashboard.scss";
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
-import "./Dashboard.css";
+// import "./Dashboard.css";
 // import { Map, Marker, GoogleApiWrapper } from 'google-maps-react';
 import { makeStyles } from '@material-ui/core/styles';
 import location1 from "../services/images/location1.png";
@@ -29,6 +29,39 @@ import Typography from '@material-ui/core/Typography';
 import DepartureBoardIcon from '@material-ui/icons/DepartureBoard';
 import AirlineSeatIndividualSuiteIcon from '@material-ui/icons/AirlineSeatIndividualSuite';
 import Maps from './Maps'
+import {
+    CButton,
+    CCard,
+    CCardBody,
+    CCardFooter,
+    CCardHeader,
+    CCol,
+    CCollapse,
+    CDropdownItem,
+    CDropdownMenu,
+    CDropdownToggle,
+    CFade,
+    CForm,
+    CFormGroup,
+    CFormText,
+    CValidFeedback,
+    CInvalidFeedback,
+    CTextarea,
+    CInput,
+    CInputFile,
+    CInputCheckbox,
+    CInputRadio,
+    CInputGroup,
+    CInputGroupAppend,
+    CInputGroupPrepend,
+    CDropdown,
+    CInputGroupText,
+    CLabel,
+    CSelect,
+    CRow,
+    CSwitch
+  } from '@coreui/react'
+  import CIcon from '@coreui/icons-react'
 
   const useStyles = makeStyles((theme) => ({
 	typography: {
@@ -72,42 +105,117 @@ export default function PatientDetails(props) {
 		  if(id === "U14-GXR")
 		  {
 			return (
-				<tr >
-                    <td style={{float:"left", width:"50%"}}>Mark Otto</td>
-                    <td style={{float:"left", width:"50%"}}>2025550177</td>
-                </tr>
+                <CForm action="" method="post">
+                <CFormGroup>
+                <CInputGroup>
+                    <CInputGroupPrepend>
+                    <CInputGroupText>Drivername</CInputGroupText>
+                    </CInputGroupPrepend>
+                    <CInputGroupAppend>
+                    <CInputGroupText><CIcon name="cil-user" />Mark Otto</CInputGroupText>
+                    </CInputGroupAppend>
+                    <br/>
+                    <CInputGroupPrepend>
+                    <CInputGroupText>Mobile Number</CInputGroupText>
+                    </CInputGroupPrepend>
+                    <CInputGroupAppend>
+                    <CInputGroupText>2025550177</CInputGroupText>
+                    </CInputGroupAppend>
+                </CInputGroup>
+                </CFormGroup>
+            </CForm>
 			)
 		  }
         else if(id === "W40-XFP"){
             return (
-				<tr>
-                    <td style={{float:"left", width:"50%"}}>Jacob Thornton</td>
-                    <td style={{float:"left", width:"50%"}}>2025550106</td>
-                </tr>
+                <CForm action="" method="post">
+                <CFormGroup>
+                <CInputGroup>
+                    <CInputGroupPrepend>
+                    <CInputGroupText>Drivername</CInputGroupText>
+                    </CInputGroupPrepend>
+                    <CInputGroupAppend>
+                    <CInputGroupText><CIcon name="cil-user" />Jacob Thornton</CInputGroupText>
+                    </CInputGroupAppend>
+                    <br/>
+                    <CInputGroupPrepend>
+                    <CInputGroupText>Mobile Number</CInputGroupText>
+                    </CInputGroupPrepend>
+                    <CInputGroupAppend>
+                    <CInputGroupText>781-585-8492</CInputGroupText>
+                    </CInputGroupAppend>
+                </CInputGroup>
+                </CFormGroup>
+            </CForm>
             )
         }
         else if(id === "U38-WKV"){
             return (
-				<tr>
-                    <td style={{float:"left", width:"50%"}}>July Dooley</td>
-                    <td style={{float:"left", width:"50%"}}>2025550127</td>
-                </tr>
+                <CForm action="" method="post">
+                <CFormGroup>
+                <CInputGroup>
+                    <CInputGroupPrepend>
+                    <CInputGroupText>Drivername</CInputGroupText>
+                    </CInputGroupPrepend>
+                    <CInputGroupAppend>
+                    <CInputGroupText><CIcon name="cil-user" />July Dooley</CInputGroupText>
+                    </CInputGroupAppend>
+                    <br/>
+                    <CInputGroupPrepend>
+                    <CInputGroupText>Mobile Number</CInputGroupText>
+                    </CInputGroupPrepend>
+                    <CInputGroupAppend>
+                    <CInputGroupText>978-897-9797</CInputGroupText>
+                    </CInputGroupAppend>
+                </CInputGroup>
+                </CFormGroup>
+            </CForm>
             )
         }
         else if(id === "V71-WWF"){
             return (
-				<tr>
-                    <td style={{float:"left", width:"50%"}}>Mary Moe</td>
-                    <td style={{float:"left", width:"50%"}}>2025550190</td>
-                </tr>
+                <CForm action="" method="post">
+                <CFormGroup>
+                <CInputGroup>
+                    <CInputGroupPrepend>
+                    <CInputGroupText>Drivername</CInputGroupText>
+                    </CInputGroupPrepend>
+                    <CInputGroupAppend>
+                    <CInputGroupText><CIcon name="cil-user" />Mary Moe</CInputGroupText>
+                    </CInputGroupAppend>
+                    <br/>
+                    <CInputGroupPrepend>
+                    <CInputGroupText>Mobile Number</CInputGroupText>
+                    </CInputGroupPrepend>
+                    <CInputGroupAppend>
+                    <CInputGroupText>978-667-7711</CInputGroupText>
+                    </CInputGroupAppend>
+                </CInputGroup>
+                </CFormGroup>
+            </CForm>
             )
         }
         else if(id === "Y54-NLN"){
             return (
-				<tr>
-                    <td style={{float:"left", width:"50%"}}>John Doe</td>
-                    <td style={{float:"left", width:"50%"}}>2025550116</td>
-                </tr>
+                <CForm action="" method="post">
+                <CFormGroup>
+                <CInputGroup>
+                    <CInputGroupPrepend>
+                    <CInputGroupText>Drivername</CInputGroupText>
+                    </CInputGroupPrepend>
+                    <CInputGroupAppend>
+                    <CInputGroupText><CIcon name="cil-user" />John Doe</CInputGroupText>
+                    </CInputGroupAppend>
+                    <br/>
+                    <CInputGroupPrepend>
+                    <CInputGroupText>Mobile Number</CInputGroupText>
+                    </CInputGroupPrepend>
+                    <CInputGroupAppend>
+                    <CInputGroupText>781-236-2094</CInputGroupText>
+                    </CInputGroupAppend>
+                </CInputGroup>
+                </CFormGroup>
+            </CForm>
             )
         }
 		else{
@@ -190,13 +298,12 @@ export default function PatientDetails(props) {
                         lng: -120.7060049
                     }}
                     style={{width: '1200px', height: '300px'}} */}
-
                     <Maps/>
                 
             </div>
 		</section>
-            <div>
-            <table className="table" style={{float:"left", width:"50%"}}>
+            
+            {/* <table className="table" style={{float:"left", width:"50%"}}>
                 <thead>
                     <tr >
                     <th style={{fontWeight: 'bold', fontSize: '1em', color: 'black', width:"50%", float:"left"}} scope="col">Driver Name</th>
@@ -206,10 +313,9 @@ export default function PatientDetails(props) {
                 <tbody>
                     {displayTable(driverid)}
                 </tbody>
-            </table>
-            </div>
+            </table> */}
 
-            <Timeline align="alternate" style={{width:"50%"}}>
+            <Timeline align="alternate" style={{width:"50%", float:"left"}}>
                 <TimelineItem>
                     <TimelineOppositeContent>
                     <Typography variant="body2" color="textSecondary">
@@ -297,7 +403,19 @@ export default function PatientDetails(props) {
                     </TimelineContent>
                 </TimelineItem>
 
-            </Timeline>
+            </Timeline> &nbsp;&nbsp;&nbsp;&nbsp;
+            <CRow>
+                <CCol>
+                <CCard style={{width:"80%"}}>
+                    <CCardHeader>
+                    Driver Information
+                    </CCardHeader>
+                    <CCardBody>
+                    {displayTable(driverid)}
+                    </CCardBody>
+                </CCard>
+                </CCol>
+                </CRow>
 	</React.Fragment>
     )
 

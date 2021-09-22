@@ -38,39 +38,39 @@ const _nav =  [
       }
     ]
   },
-  {
-    _tag: 'CSidebarNavDropdown',
-    name: 'Reports',
-    route: '/reports',
-    icon: 'cil-puzzle',
-    _children: [
-      {
-        _tag: 'CSidebarNavItem',
-        name: 'Hospital Insights',
-        to: '/reports/report1',
-      },
-      {
-        _tag: 'CSidebarNavItem',
-        name: 'Doctor Engagements',
-        to: '/reports/report2',
-      },
-      {
-        _tag: 'CSidebarNavItem',
-        name: 'Patient Demography',
-        to: '/reports/report3',
-      },
-      {
-        _tag: 'CSidebarNavItem',
-        name: 'Doctor Insights',
-        to: '/reports/report4',
-      },
-      {
-        _tag: 'CSidebarNavItem',
-        name: 'Patient Care',
-        to: '/reports/report5',
-      }
-    ]
-  },
+  // {
+  //   _tag: 'CSidebarNavDropdown',
+  //   name: 'Reports',
+  //   route: '/reports',
+  //   icon: 'cil-puzzle',
+  //   _children: [
+  //     {
+  //       _tag: 'CSidebarNavItem',
+  //       name: 'Hospital Insights',
+  //       to: '/reports/report1',
+  //     },
+  //     {
+  //       _tag: 'CSidebarNavItem',
+  //       name: 'Doctor Engagements',
+  //       to: '/reports/report2',
+  //     },
+  //     {
+  //       _tag: 'CSidebarNavItem',
+  //       name: 'Patient Demography',
+  //       to: '/reports/report3',
+  //     },
+  //     {
+  //       _tag: 'CSidebarNavItem',
+  //       name: 'Doctor Insights',
+  //       to: '/reports/report4',
+  //     },
+  //     {
+  //       _tag: 'CSidebarNavItem',
+  //       name: 'Patient Care',
+  //       to: '/reports/report5',
+  //     }
+  //   ]
+  // },
   {
     _tag: 'CSidebarNavTitle',
     _children: ['Devices']
