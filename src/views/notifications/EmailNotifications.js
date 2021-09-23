@@ -133,24 +133,22 @@ export default function ProviderInform() {
           //       console.log(res)
           //   }).catch(err=>console.log(err))
 
-          function sendemail(name, specialist) {
-            AWS.config.update({accessKeyId: 'AKIAVTQNE33K4O7JV47G',secretAccessKey: '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', region: 'us-east-1'});
-            var params = {
-              Message: 'Immediate consultation for the patient'+name+ 'with the specialist'+specialist+'due to detection of low oxygen or high Temperature', 
-              TopicArn: 'arn:aws:sns:us-east-1:385500896981:rpm-test-iot'
-            };
-            var publishTextPromise = new AWS.SNS({apiVersion: '2010-03-31'}).publish(params).promise();
-            publishTextPromise.then(
-              function(data) {
-                console.log(`Message ${params.Message} sent to the topic ${params.TopicArn}`);
-                console.log("MessageID is " + data.MessageId);
-              }).catch(
-                function(err) {
-                console.error(err, err.stack);
-              });
-          }
+            // AWS.config.update({accessKeyId: 'AKIAVTQNE33K4O7JV47G',secretAccessKey: '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', region: 'us-east-1'});
+            // var params = {
+            //   Message: 'Immediate consultation for the patient'+name+ 'with the specialist'+specialist+'due to detection of low oxygen or high Temperature', 
+            //   TopicArn: 'arn:aws:sns:us-east-1:385500896981:rpm-test-iot'
+            // };
+            // var publishTextPromise = new AWS.SNS({apiVersion: '2010-03-31'}).publish(params).promise();
+            // publishTextPromise.then(
+            //   function(data) {
+            //     console.log(`Message ${params.Message} sent to the topic ${params.TopicArn}`);
+            //     console.log("MessageID is " + data.MessageId);
+            //   }).catch(
+            //     function(err) {
+            //     console.error(err, err.stack);
+            //   });
 
-            toast.success("Appointment of "+name+"with"+specialist);
+            // toast.success("Appointment of "+name+"with"+specialist);
 
         }
         
