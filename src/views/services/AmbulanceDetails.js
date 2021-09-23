@@ -109,10 +109,10 @@ export default function PatientDetails(props) {
                 <CFormGroup>
                 <CInputGroup>
                     <CInputGroupPrepend>
-                    <CInputGroupText>Drivername</CInputGroupText>
+                    <CInputGroupText><CIcon name="cil-user" />&nbsp;&nbsp;Drivername</CInputGroupText>
                     </CInputGroupPrepend>
                     <CInputGroupAppend>
-                    <CInputGroupText><CIcon name="cil-user" />Mark Otto</CInputGroupText>
+                    <CInputGroupText>Mark Otto</CInputGroupText>
                     </CInputGroupAppend>
                     <br/>
                     <CInputGroupPrepend>
@@ -132,10 +132,10 @@ export default function PatientDetails(props) {
                 <CFormGroup>
                 <CInputGroup>
                     <CInputGroupPrepend>
-                    <CInputGroupText>Drivername</CInputGroupText>
+                    <CInputGroupText><CIcon name="cil-user" />&nbsp;&nbsp;Drivername</CInputGroupText>
                     </CInputGroupPrepend>
                     <CInputGroupAppend>
-                    <CInputGroupText><CIcon name="cil-user" />Jacob Thornton</CInputGroupText>
+                    <CInputGroupText>Jacob Thornton</CInputGroupText>
                     </CInputGroupAppend>
                     <br/>
                     <CInputGroupPrepend>
@@ -155,10 +155,10 @@ export default function PatientDetails(props) {
                 <CFormGroup>
                 <CInputGroup>
                     <CInputGroupPrepend>
-                    <CInputGroupText>Drivername</CInputGroupText>
+                    <CInputGroupText><CIcon name="cil-user" />&nbsp;&nbsp;Drivername</CInputGroupText>
                     </CInputGroupPrepend>
                     <CInputGroupAppend>
-                    <CInputGroupText><CIcon name="cil-user" />July Dooley</CInputGroupText>
+                    <CInputGroupText>July Dooley</CInputGroupText>
                     </CInputGroupAppend>
                     <br/>
                     <CInputGroupPrepend>
@@ -178,10 +178,10 @@ export default function PatientDetails(props) {
                 <CFormGroup>
                 <CInputGroup>
                     <CInputGroupPrepend>
-                    <CInputGroupText>Drivername</CInputGroupText>
+                    <CInputGroupText><CIcon name="cil-user" />&nbsp;&nbsp;Drivername</CInputGroupText>
                     </CInputGroupPrepend>
                     <CInputGroupAppend>
-                    <CInputGroupText><CIcon name="cil-user" />Mary Moe</CInputGroupText>
+                    <CInputGroupText>Mary Moe</CInputGroupText>
                     </CInputGroupAppend>
                     <br/>
                     <CInputGroupPrepend>
@@ -201,10 +201,10 @@ export default function PatientDetails(props) {
                 <CFormGroup>
                 <CInputGroup>
                     <CInputGroupPrepend>
-                    <CInputGroupText>Drivername</CInputGroupText>
+                    <CInputGroupText><CIcon name="cil-user" />&nbsp;&nbsp;Drivername</CInputGroupText>
                     </CInputGroupPrepend>
                     <CInputGroupAppend>
-                    <CInputGroupText><CIcon name="cil-user" />John Doe</CInputGroupText>
+                    <CInputGroupText>John Doe</CInputGroupText>
                     </CInputGroupAppend>
                     <br/>
                     <CInputGroupPrepend>
@@ -406,7 +406,7 @@ export default function PatientDetails(props) {
             </Timeline> &nbsp;&nbsp;&nbsp;&nbsp;
             <CRow>
                 <CCol>
-                <CCard style={{width:"80%"}}>
+                <CCard style={{width:"80%", marginLeft:"auto"}}>
                     <CCardHeader>
                     Driver Information
                     </CCardHeader>

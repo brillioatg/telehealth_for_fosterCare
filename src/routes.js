@@ -17,6 +17,7 @@ const Notification = React.lazy(() => import('./views/notifications/calendar.jsx
 const AmbulanceService = React.lazy(() => import('./views/services/AmbulanceService'));
 const AmbulanceInform = React.lazy(() => import('./views/services/AmbulanceInform'));
 const Ambulancedetails = React.lazy(() => import('./views/services/AmbulanceDetails'));
+const EmailNotification = React.lazy(() => import('./views/notifications/EmailNotifications'));
 
 const routes = [
   { path: '/', exact: true, name: 'Home' },
@@ -33,6 +34,7 @@ const routes = [
   // { path: '/reports/report3', name: 'Report3', component: Reports3, exact: true },
   // { path: '/reports/report4', name: 'Report4', component: Reports4, exact: true },
   // { path: '/reports/report5', name: 'Report5', component: Reports5, exact: true },  
+  { path: '/notifications/email', name: 'Email', component: EmailNotification, exact: true },
   { path: '/notifications', name: 'Notifications', component: Notification, exact: true },
   { path: '/services/ambulance', name: 'AmbulanceService', component: AmbulanceService, exact: true },
   { path: '/services/ambulanceinfo', name: 'AmbulanceInfo', component: AmbulanceInform, exact: true },

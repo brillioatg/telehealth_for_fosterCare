@@ -87,13 +87,19 @@ const _nav =  [
   },
   {
     _tag: 'CSidebarNavItem',
-    name: 'Video Consultation',
+    name: 'Video Consultations',
     to: '/notifications',
     icon: 'cil-bell',
     badge: {
       color: 'warning',
-      text: '1',
+      text: '+1',
     }
+  },
+  {
+    _tag: 'CSidebarNavItem',
+    name: 'Email Notifications',
+    to: '/notifications/email',
+    icon: 'cil-bell',
   },
   {
     _tag: 'CSidebarNavTitle',
