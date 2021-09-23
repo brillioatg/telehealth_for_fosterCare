@@ -133,7 +133,7 @@ export default function ProviderInform() {
           //       console.log(res)
           //   }).catch(err=>console.log(err))
 
-            // AWS.config.update({accessKeyId: 'AKIAVTQNE33K4O7JV47G',secretAccessKey: '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', region: 'us-east-1'});
+            // AWS.config.update({accessKeyId: '',secretAccessKey: '', region: 'us-east-1'});
             // var params = {
             //   Message: 'Immediate consultation for the patient'+name+ 'with the specialist'+specialist+'due to detection of low oxygen or high Temperature', 
             //   TopicArn: 'arn:aws:sns:us-east-1:385500896981:rpm-test-iot'
