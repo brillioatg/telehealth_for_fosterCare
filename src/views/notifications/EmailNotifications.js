@@ -141,7 +141,7 @@ export default function EmailNotify() {
           setpage(0);
       };
 
-        const sendemail=()=>{
+        const sendemail=(doctor)=>{
           console.log("sendemail")
           // if(email != ""){
           //   console.log(email)
@@ -150,27 +150,16 @@ export default function EmailNotify() {
                 // Username : "ashwini.deshpande@brillio.com",
                 // Password : "0DB34BFDD42055FC3DE96B3B0C9BF20D756E",
                 SecureToken : "8c60bfa1-fcd5-44ab-a415-102247622225",
-                To : "komal.kekare@brillio.com",
+                To : "ashwini.deshpande@brillio.com",
                 From : "ashwinideshpande.brillio@gmail.com",
                 Subject : "Alert ",
-                Body : "Immediate Consult with Doctor is scheduled due to Risk. Please check the portal for the details."
+                Body : `Immediate Consult with ${doctor} is scheduled due to Risk. Please check the portal for the details.`
             }).then(
             message => {
-                // let date = new Date();
+                // alert(message)
+                toast.success("Email sent successfully, Please check your inbox");
             })
-          
-          // const templateParams = {
-          //   name: name,
-          //   notes: 'Immediate consultation for the patient with the specialist due to detection of low oxygen or high Temperature'
-          // };
-
-          //   emailjs.send('service_yjt5xpr','template_jt5dkn9',templateParams, 'user_jhGso3EKVsW92UEEuze6z')
-          //   .then(res=>{
-          //       console.log(res)
-          //   }).catch(err=>console.log(err))
-
-            // console.log("notify")
-            toast.success("Email sent successfully, Please check your inbox");
+            // toast.success("Email sent successfully, Please check your inbox");
 
         }
         
@@ -253,7 +242,7 @@ export default function EmailNotify() {
                         {/* <StyledTableCell align="left">{row.email}</StyledTableCell> */}
                         <StyledTableCell align="left">{row.doctor}</StyledTableCell>
                         <StyledTableCell>{riskscore(row.cluster_label)}</StyledTableCell>
-                        <StyledTableCell key={index}> <button key={index} type="button" class="btn btn-primary" onClick={sendemail}>Send</button></StyledTableCell>
+                        <StyledTableCell key={index}> <button key={index} type="button" class="btn btn-primary" onClick={() => sendemail(row.doctor)}>Send</button></StyledTableCell>
                       </StyledTableRow>
                     )
                   })
