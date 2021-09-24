@@ -4,7 +4,7 @@ const Dashboard = React.lazy(() => import('./views/dashboard/Dashboard'));
 const Patients = React.lazy(() => import('./views/records/Patients'));
 const Providers = React.lazy(() => import('./views/records/Providers'));
 const PatientDetails = React.lazy(() => import('./views/records/PatientDetails'));
-// const Reports = React.lazy(() => import('./views/reports/Reports'));
+const Reports = React.lazy(() => import('./views/reports/Reports.js'));
 // const Reports2 = React.lazy(() => import('./views/reports/Report2'));
 // const Reports3 = React.lazy(() => import('./views/reports/Report3'));
 // const Reports4 = React.lazy(() => import('./views/reports/Report4'));
@@ -29,7 +29,7 @@ const routes = [
   { path: '/insights/continuous', name: 'insights', component: Continuous, exact: true },
   { path: '/insights/preventive', name: 'insights', component: Preventive, exact: true },
   { path: '/device/devices', name: 'Devices', component: Device, exact: true },
-  // { path: '/reports/reports', name: 'Reports', component: Reports, exact: true },
+  { path: '/reports', name: 'Reports', component: Reports, exact: true },
   // { path: '/reports/report2', name: 'Report2', component: Reports2, exact: true },
   // { path: '/reports/report3', name: 'Report3', component: Reports3, exact: true },
   // { path: '/reports/report4', name: 'Report4', component: Reports4, exact: true },

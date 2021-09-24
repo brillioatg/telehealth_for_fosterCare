@@ -29,11 +29,12 @@ import SearchIcon from '@material-ui/icons/Search';
 import {
     CBadge
   } from '@coreui/react'
-// import emailjs from 'emailjs-com';
+import emailjs from 'emailjs-com';
 var AWS = require('aws-sdk');
 
+
   
-export default function ProviderInform() {
+export default function EmailNotify() {
     const useStyles = makeStyles((theme) => ({
         root: {
           display: 'flex',
@@ -116,16 +117,51 @@ export default function ProviderInform() {
     
         const { Header, Sider, Content } = Layout;
         const { Search } = Input;
+
+
+        useEffect(() => { 
+          const res= fetch("https://tthvndwmkh.execute-api.us-east-1.amazonaws.com/rpm-api?bucket=rpm-aws-synthea&key=patientrecords.json", {
+            method: 'GET',
+          }).then(resp => resp.json()
+          ).then(resp=>{
+              setdata(resp.data)
+              console.log(data)  
+          }).catch(error => {
+              console.log(error)
+              });
+            
+        },[])
     
         const handleChangePage = (event, newPage) => {
             setpage(newPage);
         };
 
-        const sendemail=(name, specialist)=>{
+        const handleChangeRowsPerPage = event => {
+          setRowsPerPage(parseInt(event.target.value, 10));
+          setpage(0);
+      };
+
+        const sendemail=()=>{
+          console.log("sendemail")
+          // if(email != ""){
+          //   console.log(email)
+            window.Email.send({
+                // Host : "smtp.elasticemail.com",
+                // Username : "ashwini.deshpande@brillio.com",
+                // Password : "0DB34BFDD42055FC3DE96B3B0C9BF20D756E",
+                SecureToken : "8c60bfa1-fcd5-44ab-a415-102247622225",
+                To : "komal.kekare@brillio.com",
+                From : "ashwinideshpande.brillio@gmail.com",
+                Subject : "Alert ",
+                Body : "Immediate Consult with Doctor is scheduled due to Risk. Please check the portal for the details."
+            }).then(
+            message => {
+                // let date = new Date();
+            })
           
           // const templateParams = {
           //   name: name,
-          //   notes: 'Immediate consultation for the patient'+name+ 'with the specialist'+specialist+'due to detection of low oxygen or high Temperature'
+          //   notes: 'Immediate consultation for the patient with the specialist due to detection of low oxygen or high Temperature'
           // };
 
           //   emailjs.send('service_yjt5xpr','template_jt5dkn9',templateParams, 'user_jhGso3EKVsW92UEEuze6z')
@@ -133,31 +169,11 @@ export default function ProviderInform() {
           //       console.log(res)
           //   }).catch(err=>console.log(err))
 
-            // AWS.config.update({accessKeyId: '',secretAccessKey: '', region: 'us-east-1'});
-            // var params = {
-            //   Message: 'Immediate consultation for the patient'+name+ 'with the specialist'+specialist+'due to detection of low oxygen or high Temperature', 
-            //   TopicArn: 'arn:aws:sns:us-east-1:385500896981:rpm-test-iot'
-            // };
-            // var publishTextPromise = new AWS.SNS({apiVersion: '2010-03-31'}).publish(params).promise();
-            // publishTextPromise.then(
-            //   function(data) {
-            //     console.log(`Message ${params.Message} sent to the topic ${params.TopicArn}`);
-            //     console.log("MessageID is " + data.MessageId);
-            //   }).catch(
-            //     function(err) {
-            //     console.error(err, err.stack);
-            //   });
-
-            // toast.success("Appointment of "+name+"with"+specialist);
+            // console.log("notify")
+            toast.success("Email sent successfully, Please check your inbox");
 
         }
         
-        const handleChangeRowsPerPage = event => {
-            setRowsPerPage(parseInt(event.target.value, 10));
-            setpage(0);
-        };
-
-
         const riskscore=(cluster_label)=>{
           if(cluster_label === '0')
           {
@@ -179,27 +195,10 @@ export default function ProviderInform() {
           } 
         }
 
-        
-        useEffect(() => { 
-          var requestOptions = {
-            method: 'GET',
-            redirect: 'follow'
-          };
-          
-          fetch("https://tthvndwmkh.execute-api.us-east-1.amazonaws.com/rpm-api?bucket=rpm-aws-synthea&key=patientrecords.json", requestOptions)
-          .then((resp) => resp.json())
-          .then((response) => {
-            setdata(response.data)
-            console.log(data)
-          })
-          .catch(error => console.log('error', error));
-        
-        },[])
-
        
 
     return (
-      <>
+      <div>
 
         <p style={{fontSize:'22px', textAlign:'center'}}><strong>Risk Patient Details</strong></p>
 
@@ -225,7 +224,7 @@ export default function ProviderInform() {
                 {/* <TableCell align="center" style={{ fontWeight: 'bold', width: '400px' }}>Id</TableCell> */}
                 <TableCell style={{ fontWeight: 'bold'}}>Patient ID</TableCell>
                 <TableCell style={{ fontWeight: 'bold'}}>Patient Name</TableCell>
-                <TableCell style={{ fontWeight: 'bold'}}>Patient Email</TableCell>
+                {/* <TableCell style={{ fontWeight: 'bold'}}>Patient Email</TableCell> */}
                 <TableCell style={{ fontWeight: 'bold'}}>Specialist</TableCell>
                 <TableCell style={{ fontWeight: 'bold'}}>Risk Score</TableCell>
                 <TableCell style={{ fontWeight: 'bold'}}>Email Notifications</TableCell>
@@ -240,10 +239,8 @@ export default function ProviderInform() {
                   }
                   else if((val.id.toLowerCase().includes(searchTerm.toLowerCase())) ||
                   (val.name.toLowerCase().includes(searchTerm.toLowerCase())) ||
-                  (val.phone.toLowerCase().includes(searchTerm.toLowerCase())) ||
-                  (val.address.toLowerCase().includes(searchTerm.toLowerCase())) ||
-                  (val.special.toLowerCase().includes(searchTerm.toLowerCase())) ||
-                  (val.specialist.toLowerCase().includes(searchTerm.toLowerCase()))
+                  (val.email.toLowerCase().includes(searchTerm.toLowerCase())) ||
+                  (val.doctor.toLowerCase().includes(searchTerm.toLowerCase()))
                   ){
                      return val  
                   }
@@ -253,10 +250,10 @@ export default function ProviderInform() {
                       <StyledTableRow>
                         <StyledTableCell align="left">{row.id}</StyledTableCell>
                         <StyledTableCell align="left">{row.name}</StyledTableCell>
-                        <StyledTableCell align="left">{row.email}</StyledTableCell>
+                        {/* <StyledTableCell align="left">{row.email}</StyledTableCell> */}
                         <StyledTableCell align="left">{row.doctor}</StyledTableCell>
                         <StyledTableCell>{riskscore(row.cluster_label)}</StyledTableCell>
-                        <StyledTableCell key={index}><button key={index} class="btn btn-primary" onClick={sendemail(row.name, row.doctor)}>Send</button></StyledTableCell>
+                        <StyledTableCell key={index}> <button key={index} type="button" class="btn btn-primary" onClick={sendemail}>Send</button></StyledTableCell>
                       </StyledTableRow>
                     )
                   })
@@ -276,7 +273,7 @@ export default function ProviderInform() {
                 onChangeRowsPerPage={handleChangeRowsPerPage}
               />
          {/* </Content> */}
-         </>
+         </div>
         // </Layout> 
 
      

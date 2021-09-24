@@ -38,6 +38,12 @@ const _nav =  [
       }
     ]
   },
+  {
+    _tag: 'CSidebarNavItem',
+    name: 'Reports',
+    to: '/reports',
+    icon: 'cil-puzzle',
+  },
   // {
   //   _tag: 'CSidebarNavDropdown',
   //   name: 'Reports',

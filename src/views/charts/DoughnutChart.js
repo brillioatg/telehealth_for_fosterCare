@@ -76,7 +76,7 @@ const Charts = () => {
       {/* <a href="https://us-east-1.quicksight.aws.amazon.com/sn/dashboards/9f786544-dc07-4370-8949-c848fcb21ed5/views/bb2141dd-052b-4b19-b0f4-a1ce3d9032a0" target="_blank"> */}
       <CCard>
         <CCardHeader style={{backgroundColor:'#0A2533', color:'white'}}>
-         <h3>Preventive Care</h3> 
+         <h3 style={{ color:'white'}}>Preventive Care</h3> 
         </CCardHeader>
         <CCardBody style={{backgroundColor:'#0A2533', color:'white'}}>
           <CChartDoughnut
@@ -86,12 +86,11 @@ const Charts = () => {
                   '#41B883',
                   '#E46651',
                   '#00D8FF',
-                  '#DD1B16'
                 ],
-                data: [240, 250, 180, 410]
+                data: [150, 200, 80]
               }
             ]}
-            labels={['Diagnosis', 'Encounters', 'Observations', 'Analysis']}
+            labels={['Low Risk', 'Medium Risk', 'High Risk']}
             options={{
               tooltips: {
                 enabled: true
