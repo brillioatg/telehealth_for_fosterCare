@@ -15,6 +15,7 @@ import {
   CChartPie,
   CChartPolarArea
 } from '@coreui/react-chartjs'
+import { red } from '@material-ui/core/colors';
 
 export default function Insights() {
   var dashboard;
@@ -122,6 +123,8 @@ export default function Insights() {
       </CCard>
 
     </CCardGroup>
+
+    <p style={{color:"red"}}>Note: Click on the Graph header <strong>(Continuous Care, Preventive Care)</strong> to get a detailed View for the Care Insights</p>
     </div>
   )
 }

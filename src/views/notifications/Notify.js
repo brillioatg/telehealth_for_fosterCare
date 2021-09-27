@@ -10,7 +10,7 @@ export default function Notify(props){
     console.log(val)
 
     const notify = ()=>{
-        toast.warning("Meeting with Patient Abigail677_Harvey63");
+        toast.warning("Meeting with Patient Arthur650 Ortiz186");
     }
 
     useEffect(()=>{
