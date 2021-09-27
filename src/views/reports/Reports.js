@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useEffect} from 'react'
 import {
   CCard,
   CCardBody,
@@ -17,67 +17,99 @@ import {
 
 const Charts = () => {
 
+  const [data, setdata]=React.useState([]);
+  const [p_data, setp_data]=React.useState([]);
+  const [q_data, setq_data]=React.useState([]);
+
+  const fetchQSDashboard = () => {
+    var requestOptions = {
+      method: 'GET'
+    };
+
+    fetch("https://9mbf6pq7f9.execute-api.us-east-1.amazonaws.com/rpm-api/chart-api-1?mode=getUrl", requestOptions)
+    .then((resp) => resp.json())
+    .then((response) => {
+      setdata(response.EmbedUrl)
+      console.log(data)
+    })
+    .catch(error => console.log('error', error));
+  }
+
+  const fetchQSPrevData = () => {
+    var requestOptions = {
+      method: 'GET'
+    };
+
+    fetch("https://bmd942gd86.execute-api.us-east-1.amazonaws.com/rpm-api/chart-api-2?mode=getUrl", requestOptions)
+    .then((resp) => resp.json())
+    .then((response) => {
+      setp_data(response.EmbedUrl)
+      console.log(data)
+    })
+    .catch(error => console.log('error', error));
+  }
+
+  const fetchQSPrevData1 = () => {
+    var requestOptions = {
+      method: 'GET'
+    };
+
+    fetch("https://scsfq3lsui.execute-api.us-east-1.amazonaws.com/rpm-api/chart-api-3?mode=getUrl", requestOptions)
+    .then((resp) => resp.json())
+    .then((response) => {
+      setq_data(response.EmbedUrl)
+      console.log(data)
+    })
+    .catch(error => console.log('error', error));
+  }
+
+  useEffect(() => { 
+    fetchQSDashboard();
+    fetchQSPrevData();
+    fetchQSPrevData1();
+ },[])
+
   return (
-    <CCardGroup>
-      {/* <CCard>
-        <CCardHeader>
-          Bar Chart
-          <DocsLink href="http://www.chartjs.org"/>
-        </CCardHeader>
+    <CCardGroup columns className = "cols-2" >
+      <CCard>
+        <a href={data} target="_blank">
+          <CCardHeader>
+            <h4>Patient Demography - Bar Graph</h4>
+          </CCardHeader>
+        </a>
         <CCardBody>
+          <p>Count of Patient by Condition</p>
           <CChartBar
             datasets={[
               {
-                label: 'GitHub Commits',
+                label: 'Condition',
                 backgroundColor: '#f87979',
-                data: [40, 20, 12, 39, 10, 40, 39, 80, 40, 20, 12, 11]
-              }
-            ]}
-            labels="months"
-            options={{
-              tooltips: {
-                enabled: true
-              }
-            }}
-          />
-        </CCardBody>
-      </CCard> */}
-    {/* <a href="https://us-east-1.quicksight.aws.amazon.com/sn/dashboards/48be7a89-9b91-4b84-9154-545472a06a73/views/0e87f279-51a8-4e8d-83b6-42bcfe2d0d05" target="_blank">  */}
-      <CCard>
-        <CCardHeader style={{backgroundColor:'#0A2533', color:'white'}}>
-        <h3 style={{ color:'white'}}>Continuous Care</h3>
-        </CCardHeader>
-        <CCardBody style={{backgroundColor:'#0A2533', color:'white'}}>
-          <CChartLine
-            datasets={[
-              {
-                label: 'Oxygen',
-                backgroundColor: 'rgb(252, 133, 13)',
-                color: 'rgb(0,0,0)',
-                data: [80, 89, 90, 88, 106, 87, 83]
+                data: [40, 30, 80, 50, 55, 65]
               },
               {
-                label: 'Temperature',
-                backgroundColor: 'rgb(10, 135, 175)',
-                color: 'white',
-                data: [89, 80, 100, 105, 90, 96, 85]
+                label: 'Patients',
+                backgroundColor: '#00D8FF',
+                data: [30, 35, 180, 350, 255, 65]
               }
             ]}
+            labels={['Normal Pregnancy', 'Covid 19', 'Sinusitis', 'Prediabetics', 'Fever', 'cold']}
             options={{
               tooltips: {
                 enabled: true
               }
             }}
-            labels={['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su']}
           />
         </CCardBody>
       </CCard>
 
-      {/* <CCard>
+      <CCard>
+      <a href={p_data} target="_blank">
         <CCardHeader>
-          Doughnut Chart
+          <h4>Patient Care - Doughnut Chart</h4>
         </CCardHeader>
+        </a>
         <CCardBody>
+          <p>Count of Patients and Conditions by Risk</p>
           <CChartDoughnut
             datasets={[
               {
@@ -88,9 +120,14 @@ const Charts = () => {
                   '#DD1B16'
                 ],
                 data: [40, 20, 80, 10]
-              }
+              },
+              {
+                label: 'Condition',
+                backgroundColor: '#f87979',
+                data: [40, 30, 80, 50, 55, 65]
+              },
             ]}
-            labels={['VueJs', 'EmberJs', 'ReactJs', 'AngularJs']}
+            labels={['Low', 'Medium', 'High']}
             options={{
               tooltips: {
                 enabled: true
@@ -98,13 +135,44 @@ const Charts = () => {
             }}
           />
         </CCardBody>
-      </CCard> */}
+      </CCard>
 
       {/* <CCard>
         <CCardHeader>
-          Pie Chart
+          Line Chart
         </CCardHeader>
         <CCardBody>
+          <CChartLine
+            datasets={[
+              {
+                label: 'Data One',
+                backgroundColor: 'rgb(228,102,81,0.9)',
+                data: [30, 39, 10, 50, 30, 70, 35]
+              },
+              {
+                label: 'Data Two',
+                backgroundColor: 'rgb(0,216,255,0.9)',
+                data: [39, 80, 40, 35, 40, 20, 45]
+              }
+            ]}
+            options={{
+              tooltips: {
+                enabled: true
+              }
+            }}
+            labels="months"
+          />
+        </CCardBody>
+          </CCard> */}
+
+      <CCard>
+      <a href={q_data} target="_blank">
+        <CCardHeader>
+          <h4>Doctor Engagements - Pie Chart</h4>
+        </CCardHeader>
+        </a>
+        <CCardBody>
+          <p>Averge of Patient Age by Risk</p>
           <CChartPie
             datasets={[
               {
@@ -112,12 +180,15 @@ const Charts = () => {
                   '#41B883',
                   '#E46651',
                   '#00D8FF',
-                  '#DD1B16'
+                  '#DD1B16',
+                  '#4383DE',
+                  '#E54F12'
                 ],
-                data: [40, 20, 80, 10]
+                data: [40, 60, 72, 39, 90, 40, 80]
+               
               }
             ]}
-            labels={['VueJs', 'EmberJs', 'ReactJs', 'AngularJs']}
+            labels={['Normal Pregnancy', 'Covid 19', 'Sinusitis', 'Prediabetics', 'Fever', 'cold', 'others']}
             options={{
               tooltips: {
                 enabled: true
@@ -125,9 +196,9 @@ const Charts = () => {
             }}
           />
         </CCardBody>
-      </CCard> */}
+      </CCard>
 
-      {/* <CCard>
+     {/* <CCard>
         <CCardHeader>
           Polar Area Chart
         </CCardHeader>
@@ -165,9 +236,9 @@ const Charts = () => {
             ]}
           />
         </CCardBody>
-      </CCard> */}
+      </CCard>
 
-      {/* <CCard>
+      <CCard>
         <CCardHeader>
           Radar Chart
         </CCardHeader>

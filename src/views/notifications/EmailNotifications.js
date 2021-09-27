@@ -26,6 +26,7 @@ import {toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css'; 
 import { alpha} from '@material-ui/core/styles';
 import SearchIcon from '@material-ui/icons/Search';
+import Notify from './Notify'
 import {
     CBadge
   } from '@coreui/react'
@@ -141,36 +142,27 @@ export default function EmailNotify() {
           setpage(0);
       };
 
-        const sendemail=()=>{
+        const sendemail=(name, doctor, email)=>{
           console.log("sendemail")
           // if(email != ""){
           //   console.log(email)
+          toast.success("Email sent successfully to"+name+", Please check your inbox");
             window.Email.send({
                 // Host : "smtp.elasticemail.com",
                 // Username : "ashwini.deshpande@brillio.com",
                 // Password : "0DB34BFDD42055FC3DE96B3B0C9BF20D756E",
                 SecureToken : "8c60bfa1-fcd5-44ab-a415-102247622225",
-                To : "komal.kekare@brillio.com",
+                To : ["kekarekomal@gmail.com","ashwini.deshpande@brillio.com",email],
                 From : "ashwinideshpande.brillio@gmail.com",
-                Subject : "Alert ",
-                Body : "Immediate Consult with Doctor is scheduled due to Risk. Please check the portal for the details."
+                Subject : "Consult with"+doctor,
+                Body : `Immediate Consult with ${doctor} is scheduled due to Risk. Please check the portal for the details.`
             }).then(
             message => {
-                // let date = new Date();
+                // alert(message)
+                
+                <Notify data={name, doctor}/>
             })
-          
-          // const templateParams = {
-          //   name: name,
-          //   notes: 'Immediate consultation for the patient with the specialist due to detection of low oxygen or high Temperature'
-          // };
-
-          //   emailjs.send('service_yjt5xpr','template_jt5dkn9',templateParams, 'user_jhGso3EKVsW92UEEuze6z')
-          //   .then(res=>{
-          //       console.log(res)
-          //   }).catch(err=>console.log(err))
-
-            // console.log("notify")
-            toast.success("Email sent successfully, Please check your inbox");
+            // toast.success("Email sent successfully, Please check your inbox");
 
         }
         
@@ -224,7 +216,7 @@ export default function EmailNotify() {
                 {/* <TableCell align="center" style={{ fontWeight: 'bold', width: '400px' }}>Id</TableCell> */}
                 <TableCell style={{ fontWeight: 'bold'}}>Patient ID</TableCell>
                 <TableCell style={{ fontWeight: 'bold'}}>Patient Name</TableCell>
-                {/* <TableCell style={{ fontWeight: 'bold'}}>Patient Email</TableCell> */}
+                <TableCell style={{ fontWeight: 'bold'}}>Patient Email</TableCell>
                 <TableCell style={{ fontWeight: 'bold'}}>Specialist</TableCell>
                 <TableCell style={{ fontWeight: 'bold'}}>Risk Score</TableCell>
                 <TableCell style={{ fontWeight: 'bold'}}>Email Notifications</TableCell>
@@ -250,10 +242,10 @@ export default function EmailNotify() {
                       <StyledTableRow>
                         <StyledTableCell align="left">{row.id}</StyledTableCell>
                         <StyledTableCell align="left">{row.name}</StyledTableCell>
-                        {/* <StyledTableCell align="left">{row.email}</StyledTableCell> */}
+                        <StyledTableCell align="left">{row.email}</StyledTableCell>
                         <StyledTableCell align="left">{row.doctor}</StyledTableCell>
                         <StyledTableCell>{riskscore(row.cluster_label)}</StyledTableCell>
-                        <StyledTableCell key={index}> <button key={index} type="button" class="btn btn-primary" onClick={sendemail}>Send</button></StyledTableCell>
+                        <StyledTableCell key={index}> <button key={index} type="button" class="btn btn-primary" onClick={() => sendemail(row.name,row.email,row.doctor)}>Send</button></StyledTableCell>
                       </StyledTableRow>
                     )
                   })
