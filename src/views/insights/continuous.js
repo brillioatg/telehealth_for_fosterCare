@@ -71,7 +71,8 @@ export default function Insights() {
 
   return (
     <div>
-      <a href={data} target="_blank"><Charts/></a>
+      <Charts/>
+      <p style={{color:'red'}}>Note: Click on the Graph header<strong>(Continuous Care, Preventive Care)</strong> to get a detailed View for the Care Insights</p>
       {/* <h1>AWS- Continuous Care</h1>
      {/* <img width="100%" height="450px" src={continuousimg}/> */}
      {/* <div id="embeddingContainer">{embedDashboard}</div>  */}

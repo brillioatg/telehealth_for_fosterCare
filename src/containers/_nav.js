@@ -21,27 +21,9 @@ const _nav =  [
     icon: 'cil-hospital',
   },
   {
-    _tag: 'CSidebarNavDropdown',
-    name: 'Care Insights',
-    route: '/insights',
-    icon: 'cil-puzzle',
-    _children: [
-      {
-        _tag: 'CSidebarNavItem',
-        name: 'Continuous Care',
-        to: '/insights/continuous',
-      },
-      {
-        _tag: 'CSidebarNavItem',
-        name: 'Preventive care',
-        to: '/insights/preventive',
-      }
-    ]
-  },
-  {
     _tag: 'CSidebarNavItem',
-    name: 'Reports',
-    to: '/reports',
+    name: 'Care Insights',
+    to: '/insights',
     icon: 'cil-puzzle',
   },
   // {
