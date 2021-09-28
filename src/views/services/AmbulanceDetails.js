@@ -114,7 +114,6 @@ export default function PatientDetails(props) {
                     <CInputGroupAppend>
                     <CInputGroupText>Mark Otto</CInputGroupText>
                     </CInputGroupAppend>
-                    <br/>
                     <CInputGroupPrepend>
                     <CInputGroupText>Mobile Number</CInputGroupText>
                     </CInputGroupPrepend>

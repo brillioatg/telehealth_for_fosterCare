@@ -26,6 +26,7 @@ import {toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css'; 
 import { alpha} from '@material-ui/core/styles';
 import SearchIcon from '@material-ui/icons/Search';
+import calender from './calendar.jsx'
 import Notify from './Notify'
 import {
     CBadge
@@ -159,8 +160,8 @@ export default function EmailNotify() {
             }).then(
             message => {
                 // alert(message)
-                
-                <Notify data={name, doctor}/>
+                <calender data="hello"/>
+                // <Notify />
             })
             // toast.success("Email sent successfully, Please check your inbox");
 

@@ -19,6 +19,7 @@ const TheHeaderDropdown = () => {
       direction="down"
     >
       <CDropdownToggle className="c-header-nav-link" caret={false}>
+      <span style={{marginRight:'15px'}}><b>Welcome Steve</b></span> 
         <div className="c-avatar">
         <Avatar alt="Remy Sharp" style={{backgroundColor:"blue"}}/>
         </div>
@@ -36,7 +37,7 @@ const TheHeaderDropdown = () => {
           <CIcon name="cil-bell" className="mfe-2" />
           Logout
         </CDropdownItem>
-        <CDropdownItem
+        {/* <CDropdownItem
           header
           tag="div"
           color="light"
@@ -55,7 +56,7 @@ const TheHeaderDropdown = () => {
           <CIcon name="cil-credit-card" className="mfe-2" />
           Notifications
           <CBadge color="secondary" className="mfs-auto">1</CBadge>
-        </CDropdownItem>
+        </CDropdownItem> */}
       </CDropdownMenu>
     </CDropdown>
   )

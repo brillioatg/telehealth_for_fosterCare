@@ -33,13 +33,13 @@ const Dashboard = () => {
           <CRow>
             <CCol sm="5">
               <h3 id="traffic" className="card-title mb-0">Preventive Care</h3>
-              <div className="small text-muted">August 2021</div>
+              <div className="small text-muted">September 2021</div>
             </CCol>
             <CCol sm="7" className="d-none d-md-block">
-              <CButton color="primary" className="float-right">
+              {/* <CButton color="primary" className="float-right">
                 <CIcon name="cil-cloud-download"/>
-              </CButton>
-              <CButtonGroup className="float-right mr-3">
+              </CButton> */}
+              {/* <CButtonGroup className="float-right mr-3">
                 {
                   ['Day', 'Month', 'Year'].map(value => (
                     <CButton
@@ -52,7 +52,7 @@ const Dashboard = () => {
                     </CButton>
                   ))
                 }
-              </CButtonGroup>
+              </CButtonGroup> */}
             </CCol>
           </CRow>
           <MainChartExample style={{height: '300px', marginTop: '40px'}}/>
@@ -83,7 +83,7 @@ const Dashboard = () => {
           <CIcon name="cil-basket" height="36"/>
         </CWidgetProgressIcon>
         <CWidgetProgressIcon
-          header="28%"
+          header="280"
           text="Care Insights"
           color="gradient-primary"
           inverse

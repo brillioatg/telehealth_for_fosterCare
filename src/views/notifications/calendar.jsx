@@ -3,7 +3,8 @@ import * as ReactDOM from 'react-dom';
 import Notify from './Notify'
 import { ScheduleComponent, Day, Week, WorkWeek, Month, Agenda, Inject } from '@syncfusion/ej2-react-schedule';
 export default class Calender extends React.Component {
-    constructor() {
+    constructor(props) {
+        console.log(props);
         super(...arguments);
         this.data = [{
                 Id: 2,
@@ -22,7 +23,17 @@ export default class Calender extends React.Component {
                 IsAllDay: false,
                 Status: 'Pending',
                 Priority: 'High'
-            }];
+            },
+            {
+                Id: 4,
+                Subject: 'Meeting with'+this.props.name,
+                StartTime: new Date(2021, 8, 20, 12, 0),
+                EndTime: new Date(2021, 8, 20, 12, 30),
+                IsAllDay: false,
+                Status: 'Pending',
+                Priority: 'High'
+            }
+        ];
     }
     render() {
         return (
