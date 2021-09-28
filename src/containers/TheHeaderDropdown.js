@@ -21,7 +21,7 @@ const TheHeaderDropdown = () => {
       <CDropdownToggle className="c-header-nav-link" caret={false}>
       <span style={{marginRight:'15px'}}><b>Welcome Steve</b></span> 
         <div className="c-avatar">
-        <Avatar alt="Remy Sharp" style={{backgroundColor:"blue"}}/>
+        <Avatar alt="Remy Sharp" src={img} />
         </div>
       </CDropdownToggle>
       <CDropdownMenu className="pt-0" placement="bottom-end">

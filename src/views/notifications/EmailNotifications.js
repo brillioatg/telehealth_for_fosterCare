@@ -26,16 +26,12 @@ import {toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css'; 
 import { alpha} from '@material-ui/core/styles';
 import SearchIcon from '@material-ui/icons/Search';
-import calender from './calendar.jsx'
-import Notify from './Notify'
 import {
     CBadge
   } from '@coreui/react'
-import emailjs from 'emailjs-com';
+import config from '../../config.js';
 var AWS = require('aws-sdk');
 
-
-  
 export default function EmailNotify() {
     const useStyles = makeStyles((theme) => ({
         root: {
@@ -143,30 +139,28 @@ export default function EmailNotify() {
           setpage(0);
       };
 
-        const sendemail=(name, doctor, email)=>{
-          console.log("sendemail")
-          // if(email != ""){
-          //   console.log(email)
-          toast.success("Email sent successfully to"+name+", Please check your inbox");
-            window.Email.send({
-                // Host : "smtp.elasticemail.com",
-                // Username : "ashwini.deshpande@brillio.com",
-                // Password : "0DB34BFDD42055FC3DE96B3B0C9BF20D756E",
-                SecureToken : "8c60bfa1-fcd5-44ab-a415-102247622225",
-                To : ["kekarekomal@gmail.com","ashwini.deshpande@brillio.com",email],
-                From : "ashwinideshpande.brillio@gmail.com",
-                Subject : "Consult with"+doctor,
-                Body : `Immediate Consult with ${doctor} is scheduled due to Risk. Please check the portal for the details.`
-            }).then(
-            message => {
-                // alert(message)
-                <calender data="hello"/>
-                // <Notify />
-            })
-            // toast.success("Email sent successfully, Please check your inbox");
+        const sendemail=(doctor)=>{
+          AWS.config.update({accessKeyId: config.snsemail.key ,secretAccessKey: config.snsemail.secret , region: config.snsemail.region});
+
+          var params = {
+            Message: `Immediate Consult with ${doctor} is scheduled due to Risk. Please check the portal for the details.`, 
+            Subject: 'Test Preventive Care',
+            TopicArn: config.snsemail.topic
+          };
+
+          var publishTextPromise = new AWS.SNS({apiVersion: '2010-03-31'}).publish(params).promise();
+
+          publishTextPromise.then(
+            function(data) {
+              // console.log("MessageID is " + data.MessageId);
+              toast.success("Email sent successfully, Please check your inbox");
+            }).catch(
+              function(err) {
+              console.error(err, err.stack);
+            });
 
         }
-        
+
         const riskscore=(cluster_label)=>{
           if(cluster_label === '0')
           {
@@ -217,7 +211,7 @@ export default function EmailNotify() {
                 {/* <TableCell align="center" style={{ fontWeight: 'bold', width: '400px' }}>Id</TableCell> */}
                 <TableCell style={{ fontWeight: 'bold'}}>Patient ID</TableCell>
                 <TableCell style={{ fontWeight: 'bold'}}>Patient Name</TableCell>
-                <TableCell style={{ fontWeight: 'bold'}}>Patient Email</TableCell>
+                {/* <TableCell style={{ fontWeight: 'bold'}}>Patient Email</TableCell> */}
                 <TableCell style={{ fontWeight: 'bold'}}>Specialist</TableCell>
                 <TableCell style={{ fontWeight: 'bold'}}>Risk Score</TableCell>
                 <TableCell style={{ fontWeight: 'bold'}}>Email Notifications</TableCell>
@@ -243,10 +237,10 @@ export default function EmailNotify() {
                       <StyledTableRow>
                         <StyledTableCell align="left">{row.id}</StyledTableCell>
                         <StyledTableCell align="left">{row.name}</StyledTableCell>
-                        <StyledTableCell align="left">{row.email}</StyledTableCell>
+                        {/* <StyledTableCell align="left">{row.email}</StyledTableCell> */}
                         <StyledTableCell align="left">{row.doctor}</StyledTableCell>
                         <StyledTableCell>{riskscore(row.cluster_label)}</StyledTableCell>
-                        <StyledTableCell key={index}> <button key={index} type="button" class="btn btn-primary" onClick={() => sendemail(row.name,row.email,row.doctor)}>Send</button></StyledTableCell>
+                        <StyledTableCell key={index}> <button key={index} type="button" class="btn btn-primary" onClick={() => sendemail(row.doctor)}>Send</button></StyledTableCell>
                       </StyledTableRow>
                     )
                   })

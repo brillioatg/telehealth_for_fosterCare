@@ -3,14 +3,12 @@ import {toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css'; 
     
 toast.configure() 
-export default function Notify(props){
+export default function Notify(){
 
     const [data, setdata] = useState([]);
-    const {val} = props;
-    console.log(val)
 
     const notify = ()=>{
-        toast.warning("Meeting with Patient Arthur650 Ortiz186");
+        toast.warning("Meeting with Patient Abigail677_Harvey63");
     }
 
     useEffect(()=>{

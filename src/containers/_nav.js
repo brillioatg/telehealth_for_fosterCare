@@ -21,17 +21,29 @@ const _nav =  [
     icon: 'cil-hospital',
   },
   {
-    _tag: 'CSidebarNavItem',
+    _tag: 'CSidebarNavDropdown',
     name: 'Care Insights',
-    to: '/insights',
+    route: '/insights',
+    icon: 'cil-puzzle',
+    _children: [
+      {
+        _tag: 'CSidebarNavItem',
+        name: 'Continuous Care',
+        to: '/insights/continuous',
+      },
+      {
+        _tag: 'CSidebarNavItem',
+        name: 'Preventive care',
+        to: '/insights/preventive',
+      }
+    ]
+  },
+  {
+    _tag: 'CSidebarNavItem',
+    name: 'Reports',
+    to: '/reports',
     icon: 'cil-puzzle',
   },
-  // {
-  //   _tag: 'CSidebarNavItem',
-  //   name: 'Reports',
-  //   to: '/reports',
-  //   icon: 'cil-puzzle',
-  // },
   // {
   //   _tag: 'CSidebarNavDropdown',
   //   name: 'Reports',
@@ -81,12 +93,6 @@ const _nav =  [
   },
   {
     _tag: 'CSidebarNavItem',
-    name: 'Email Notifications',
-    to: '/notifications/email',
-    icon: 'cil-bell',
-  },
-  {
-    _tag: 'CSidebarNavItem',
     name: 'Video Consultations',
     to: '/notifications',
     icon: 'cil-bell',
@@ -94,6 +100,12 @@ const _nav =  [
       color: 'warning',
       text: '+1',
     }
+  },
+  {
+    _tag: 'CSidebarNavItem',
+    name: 'Email Notifications',
+    to: '/notifications/email',
+    icon: 'cil-bell',
   },
   {
     _tag: 'CSidebarNavTitle',
