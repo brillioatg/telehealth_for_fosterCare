@@ -29,11 +29,9 @@ import SearchIcon from '@material-ui/icons/Search';
 import {
     CBadge
   } from '@coreui/react'
-import emailjs from 'emailjs-com';
+import config from '../../config.js';
 var AWS = require('aws-sdk');
 
-
-  
 export default function EmailNotify() {
     const useStyles = makeStyles((theme) => ({
         root: {
@@ -142,27 +140,27 @@ export default function EmailNotify() {
       };
 
         const sendemail=(doctor)=>{
-          console.log("sendemail")
-          // if(email != ""){
-          //   console.log(email)
-            window.Email.send({
-                // Host : "smtp.elasticemail.com",
-                // Username : "ashwini.deshpande@brillio.com",
-                // Password : "0DB34BFDD42055FC3DE96B3B0C9BF20D756E",
-                SecureToken : "8c60bfa1-fcd5-44ab-a415-102247622225",
-                To : "ashwini.deshpande@brillio.com",
-                From : "ashwinideshpande.brillio@gmail.com",
-                Subject : "Alert ",
-                Body : `Immediate Consult with ${doctor} is scheduled due to Risk. Please check the portal for the details.`
-            }).then(
-            message => {
-                // alert(message)
-                toast.success("Email sent successfully, Please check your inbox");
-            })
-            // toast.success("Email sent successfully, Please check your inbox");
+          AWS.config.update({accessKeyId: config.snsemail.key ,secretAccessKey: config.snsemail.secret , region: config.snsemail.region});
+
+          var params = {
+            Message: `Immediate Consult with ${doctor} is scheduled due to Risk. Please check the portal for the details.`, 
+            Subject: 'Test Preventive Care',
+            TopicArn: config.snsemail.topic
+          };
+
+          var publishTextPromise = new AWS.SNS({apiVersion: '2010-03-31'}).publish(params).promise();
+
+          publishTextPromise.then(
+            function(data) {
+              // console.log("MessageID is " + data.MessageId);
+              toast.success("Email sent successfully, Please check your inbox");
+            }).catch(
+              function(err) {
+              console.error(err, err.stack);
+            });
 
         }
-        
+
         const riskscore=(cluster_label)=>{
           if(cluster_label === '0')
           {
