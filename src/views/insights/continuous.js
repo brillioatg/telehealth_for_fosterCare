@@ -73,14 +73,6 @@ export default function Insights() {
     <div>
       <Charts/>
       <p style={{color:'red'}}>Note: Click on the Graph header<strong>(Continuous Care, Preventive Care)</strong> to get a detailed View for the Care Insights</p>
-      {/* <h1>AWS- Continuous Care</h1>
-     {/* <img width="100%" height="450px" src={continuousimg}/> */}
-     {/* <div id="embeddingContainer">{embedDashboard}</div>  */}
-    {/* <iframe width="100%" height="450px" src={data} frameborder="0" allowFullScreen="true"></iframe>  */}
-    
-    {/* <a href="https://us-east-1.quicksight.aws.amazon.com/sn/dashboards/9f786544-dc07-4370-8949-c848fcb21ed5/views/bb2141dd-052b-4b19-b0f4-a1ce3d9032a0" target="_blank"><DoughnutChart/></a> */}
-    {/* <iframe width="100%" height="450px" url="https://cvzg49w5bc.execute-api.us-east-1.amazonaws.com/test-QS/qsresource-sample"></iframe>  */}
-    
     </div>
   )
 }
