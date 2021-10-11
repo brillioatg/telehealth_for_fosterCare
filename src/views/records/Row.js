@@ -48,7 +48,7 @@ export default function Row(props) {
   const displayCheckedBox = (row) => {
     console.log("--------------row")
     console.log(row);
-      if(row === "d4a30d91-8283-eddc-799c-d3131f7cf2d7" || row === "5be71bc3-c641-111b-bc57-2fb9b58eba8d")
+      if(row === "d4a30d91-8283-eddc-799c-d3131f7cf2d7")
       // if(row) 
       {
         return (
@@ -134,3 +134,4 @@ export default function Row(props) {
   </React.Fragment>
     );
   }
+

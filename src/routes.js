@@ -18,6 +18,7 @@ const AmbulanceService = React.lazy(() => import('./views/services/AmbulanceServ
 const AmbulanceInform = React.lazy(() => import('./views/services/AmbulanceInform'));
 const Ambulancedetails = React.lazy(() => import('./views/services/AmbulanceDetails'));
 const EmailNotification = React.lazy(() => import('./views/notifications/EmailNotifications'));
+// const Modal = React.lazy(() => import('./views/records/modal.js'));
 
 const routes = [
   { path: '/', exact: true, name: 'Home' },
@@ -29,6 +30,7 @@ const routes = [
   // { path: '/insights/preventive', name: 'insights', component: Preventive, exact: true },
   { path: '/device/devices', name: 'Devices', component: Device, exact: true },
   // { path: '/reports', name: 'Reports', component: Reports, exact: true },
+  // { path: '/Modal', name: 'Modal', component: Modal },
   { path: '/notifications/email', name: 'Email', component: EmailNotification, exact: true },
   { path: '/notifications', name: 'Notifications', component: Notification, exact: true },
   { path: '/services/ambulance', name: 'AmbulanceService', component: AmbulanceService, exact: true },

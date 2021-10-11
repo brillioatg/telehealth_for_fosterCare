@@ -139,12 +139,24 @@ export default function EmailNotify() {
           setpage(0);
       };
 
-        const sendemail=(doctor)=>{
+        const sendemail=(patient, doctor, risk)=>{
           AWS.config.update({accessKeyId: config.snsemail.key ,secretAccessKey: config.snsemail.secret , region: config.snsemail.region});
 
           var params = {
-            Message: `Immediate Consult with ${doctor} is scheduled due to Risk. Please check the portal for the details.`, 
-            Subject: 'Test Preventive Care',
+            Message: `Dear ${patient}/${doctor}
+                        As part of remote health monitoring, respiratory health vital indicators Oxygen Saturation(SpO2) level and Body Temperature of ${patient} is continuously recorded.
+                        As part of regular diagnostics awareness, oxygen levels and temperature is recorded in last 5 minutes duration.
+                        Oxygen level-80
+                        Temperature-100
+                        Immediate consultation is setup with provider to rule out any cause of concerns & complications, for adjustments needed on dosage or treatment methods, to ensure overall health stability.
+                        As preliminary, please take notice of below critical parameters for discussion with doctor.
+                        A bluish tint to fingernails, lips and skin
+                        Chest congestion
+                        shortness of breath
+                        persistent cough
+                        Thanking You
+                        Hospital Management `, 
+            Subject: `Connect with ${doctor}`,
             TopicArn: config.snsemail.topic
           };
 
@@ -240,7 +252,7 @@ export default function EmailNotify() {
                         {/* <StyledTableCell align="left">{row.email}</StyledTableCell> */}
                         <StyledTableCell align="left">{row.doctor}</StyledTableCell>
                         <StyledTableCell>{riskscore(row.cluster_label)}</StyledTableCell>
-                        <StyledTableCell key={index}> <button key={index} type="button" class="btn btn-primary" onClick={() => sendemail(row.doctor)}>Send</button></StyledTableCell>
+                        <StyledTableCell key={index}> <button key={index} type="button" class="btn btn-primary" onClick={() => sendemail(row.name, row.doctor, row.cluster_label)}>Send</button></StyledTableCell>
                       </StyledTableRow>
                     )
                   })

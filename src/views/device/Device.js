@@ -53,7 +53,7 @@ export default function Device() {
       }
 
     const rows = [
-        createData('Oxygen and Temperature',"Abigail677_Harvey63")
+        createData('Oxygen and Temperature',"Arthur650_Ortiz186")
       ]
 
     return (

@@ -14,10 +14,27 @@ import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 // import "./Dashboard.css";
 import Popover from '@material-ui/core/Popover';
 import Typography from '@material-ui/core/Typography';
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles, withStyles } from '@material-ui/core/styles';
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
+import Modal from '@mui/material/Modal';
+import Modalcontent from './modal.js';
+import {toast} from 'react-toastify'; 
+import 'react-toastify/dist/ReactToastify.css'; 
 
 // import ttConfig from '../config'
 
+	const modalstyle = {
+	position: 'absolute',
+	top: '50%',
+	left: '50%',
+	transform: 'translate(-50%, -50%)',
+	width: 400,
+	bgcolor: 'background.paper',
+	border: '2px solid #000',
+	boxShadow: 24,
+	p: 4,
+	};
   const useStyles = makeStyles((theme) => ({
 	typography: {
 		padding: theme.spacing(2),
@@ -34,7 +51,10 @@ export default function PatientDetails() {
     const [posts, setPosts] = useState([]);
 	const history = useHistory();
     const location = useLocation();
-	const [anchorEl, setAnchorEl] = React.useState(null);
+	const [anchorEl, setAnchorEl] = useState(null);
+	const [modalopen, setmodalopen] = useState(false);
+  	const modalhandleOpen = () => setmodalopen(true);
+  	const modalhandleClose = () => setmodalopen(false);
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -46,8 +66,8 @@ export default function PatientDetails() {
 
   const displayInfo = () => {
 	  return(
-		  <span style={{position: 'relative', marginRight: '10px'}}>
-	<InfoCircleOutlined  onClick={handleClick}/>
+		  <span style={{position: 'relative', marginLeft: '6px'}}>
+	<span><InfoCircleOutlined  onClick={handleClick} style={{fontSize: '1em'}}/></span>
 	<Popover
 		id={id}
 		open={open}
@@ -142,7 +162,7 @@ export default function PatientDetails() {
 		if(orderDetails) {
 			return (
 				<tr>
-					<th style={{ height: '0px', fontWeight: 'bold' }}><b>Birthdate {displayInfo()}</b></th>
+					<th style={{ height: '0px', fontWeight: 'bold' }}><b>Birthdate{displayInfo()}</b></th>
 					<td className="pw" style={{ height: '0px' }}>{orderDetails && orderDetails.birthDate}</td>
 				</tr>
 			)
@@ -247,6 +267,17 @@ export default function PatientDetails() {
 			)
 		}
 	}
+
+	const displayHospital = (row) => {
+		if(row === "d4a30d91-8283-eddc-799c-d3131f7cf2d7") {
+			return (
+				<tr>
+					<th style={{ height: '0px', fontWeight: 'bold' }}><b>Share Details to Provider{displayInfo()}</b></th>
+					<td className="pw" style={{ height: '0px' }}>A BALANCED WAY</td>
+				</tr>
+			)
+		}
+	}
 	
 	const displayAddress = () => {
 		if(orderDetails) {
@@ -265,38 +296,91 @@ export default function PatientDetails() {
     }
 
 	const redirectToConsultDetails = (e, id) => {
-        var url = `/consultation?id=${id}`;
+        var url = `/notifications?id=${id}`;
         history.push(`${url}`);
     }
 
 	const displayViewInsights = (id) => {
-		  if(id === "d4a30d91-8283-eddc-799c-d3131f7cf2d7" || id === "5be71bc3-c641-111b-bc57-2fb9b58eba8d")
+		  if(id === "d4a30d91-8283-eddc-799c-d3131f7cf2d7")
 		  {
 			return (
-				<button type="button" class="btn btn-primary">View Insights</button>
-				
+				<span>
+					<button type="button" class="btn btn-primary form-group col-md-20" style={{ float: "right", marginRight:"5px" }} onClick={(e) => { redirectToPatientDetails(e, singlepatientid)}}>View Insights</button>
+				</span>
 			)
 		  }
 		  else{
 			return(
-			  	<button type="button" class="btn btn-primary" style={{color:"black"}} disabled>View Insights</button>
-				 
+				<span>
+			  		<button type="button" class="btn btn-primary form-group col-md-20" style={{float: "right", marginRight:"5px", color:"black"}} disabled>View Insights</button>
+				</span> 
 			)
 		  }
 		}	
 
 	const displayNotification = (id) => {	
-		if(id === "d4a30d91-8283-eddc-799c-d3131f7cf2d7" || id === "5be71bc3-c641-111b-bc57-2fb9b58eba8d")
+		if(id === "d4a30d91-8283-eddc-799c-d3131f7cf2d7")
 		{
 		  return (
-			<button type="button" class="btn btn-primary">View Notifications</button>
+			<span>
+				<button type="button" class="btn btn-primary form-group col-md-20" style={{ float: "right", marginRight:"5px" }} onClick={(e) => { redirectToConsultDetails(e, singlepatientid)}}>View Notifications</button>
+		  	</span>
 		  )
 		}
 		else
 		{
 			return (
-				<button type="button" class="btn btn-primary" style={{color:"black"}} disabled>View Notifications</button>
-			  )
+				<span>
+					<button type="button" class="btn btn-primary form-group col-md-20" style={{float: "right", marginRight:"5px", color:"black"}} disabled>View Notifications</button>
+			  	</span>
+			)
+		}
+	}
+
+	const displayshare = () => {
+			return (
+				<span>
+					<button type="button" class="btn btn-primary form-group col-md-20" style={{ float: "right", marginRight:"5px" , paddingTop: '5px'}} onClick={(e) => {displaysharetoast()}}>Share Details</button>
+				</span>
+			)
+		}
+
+	const displaysharetoast = () => {
+			modalhandleClose()
+			toast.success("Successfully shared the details with the Provider")
+		}
+
+	const displayfhirdetails = (id) => {	
+		if(id === "d4a30d91-8283-eddc-799c-d3131f7cf2d7")
+		{
+		  return (
+			  <div>
+				<button type="button" class="btn btn-primary form-group col-md-20" style={{ float: "right"}} onClick={(e) => { modalhandleOpen()}}>View Monitoring Details</button>
+				<Modal
+						open={modalopen}
+						onClose={modalhandleClose}
+						aria-labelledby="modal-modal-title"
+						aria-describedby="modal-modal-description"
+					>
+						<Box sx={modalstyle}>
+						<Typography id="modal-modal-description" sx={{ mt: 2 }}>
+							<Modalcontent/>
+						</Typography>
+						<Typography id="modal-modal-description" class="d-flex justify-content-center" sx={{ mt: 2 }} style={{ paddingTop: '5px'}}>
+							{displayshare()}
+						</Typography>
+						</Box>
+					</Modal>
+    		</div>
+		  )
+		}
+		else
+		{
+			return (
+				<span>
+					<button type="button" class="btn btn-primary form-group col-md-20" style={{float: "right", marginRight:"5px", color:"black"}} disabled>View Monitoring Details</button>
+			  	</span>
+			)
 		}
 	}
 
@@ -305,22 +389,21 @@ export default function PatientDetails() {
 	const displayCheckedBox = (row) => {
 		// console.log("--------------row")
 		// console.log(row);
-		  if(row === "d4a30d91-8283-eddc-799c-d3131f7cf2d7" || row === "5be71bc3-c641-111b-bc57-2fb9b58eba8d")
-		  // if(row) 
+		  if(row === "d4a30d91-8283-eddc-799c-d3131f7cf2d7")
 		  {
 			return (
-				<div>
+				<span>
 			  		<FormControlLabel disabled control={<Checkbox checked name="checkedEvent" style={{color: '#1890ff'}} />} label="Remote Care"/>
 			  		<FormControlLabel disabled control={<Checkbox checked name="checkedEvent" style={{color: '#1890ff'}} />} label="Consent Form"/>
-				</div>
+				</span>
 			)
 		  }
 		  else{
 			return(
-			  	<div>
-			  		<FormControlLabel disabled control={<Checkbox name="checkedEvent" />} label="Remote Care"/>
-			  		<FormControlLabel disabled control={<Checkbox name="checkedEvent" />} label="Consent Form"/>
-				</div>
+			  	<span>
+					<span><FormControlLabel disabled control={<Checkbox name="checkedEvent"/>} label="Remote Care"/></span>
+			  		<span><FormControlLabel disabled control={<Checkbox name="checkedEvent"/>} label="Consent Form"/></span>
+				</span>
 			)
 		  }
 		}
@@ -347,18 +430,13 @@ export default function PatientDetails() {
 					</LoadingOverlay>
 			
             
-			 <h4 style={{ fontSize: '18px', fontWeight: 'bold', textAlign:'left', padding: '15px' }}>
+			 <span style={{ fontSize: '18px', fontWeight: 'bold', textAlign:'left', padding: '15px' }}>
 			{/* <Link to="/patientinfo"><ArrowBackIcon style={{color:"black"}}/></Link>&nbsp;&nbsp; */}
 				Patient Details : 
-				<a className="form-group col-md-20" style={{ float: "right" }} onClick={(e) => { redirectToPatientDetails(e, singlepatientid)}}>
-					{displayViewInsights(singlepatientid)}
-				</a>
-			
-				<a className="form-group col-md-20" style={{ float: "right", marginRight:"5px"  }} onClick={(e) => { redirectToConsultDetails(e, singlepatientid)}}>
-					{displayNotification(singlepatientid)}
-				</a>
-				
-			</h4>
+						{displayfhirdetails(singlepatientid)}
+						{displayNotification(singlepatientid)}
+						{displayViewInsights(singlepatientid)}
+			</span>
 
             <div className="col-lg-12 col-md-12 place-order" style={{textAlign:'left'}}>
                 <div className="padding-bottom20">
@@ -375,7 +453,7 @@ export default function PatientDetails() {
 							{orderDetails && displayPPN()}
 							{orderDetails && displayMRN()}
 							{orderDetails && displayDL()}
-							
+							{orderDetails && displayHospital(singlepatientid)}
 							{orderDetails && displayCheckedBox(singlepatientid)}
                         </tbody>
                     </Table>	
