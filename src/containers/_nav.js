@@ -75,6 +75,12 @@ const _nav =  [
   },
   {
     _tag: 'CSidebarNavItem',
+    name: 'Email Notifications',
+    to: '/notifications/email',
+    icon: 'cil-bell',
+  },
+  {
+    _tag: 'CSidebarNavItem',
     name: 'Video Consultations',
     to: '/notifications',
     icon: 'cil-bell',
@@ -82,12 +88,6 @@ const _nav =  [
       color: 'warning',
       text: '+1',
     }
-  },
-  {
-    _tag: 'CSidebarNavItem',
-    name: 'Email Notifications',
-    to: '/notifications/email',
-    icon: 'cil-bell',
   },
   {
     _tag: 'CSidebarNavTitle',
