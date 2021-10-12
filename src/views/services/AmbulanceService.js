@@ -132,19 +132,17 @@ export default function PatientInform() {
               padding: 24,
               minHeight: 550,
             }}> */}
-            <h1 style={{fontSize:'20px', textAlign:'center'}}>24/7 Ambulance Services</h1>
+            <h1 style={{fontSize:'20px', textAlign:'center', fontWeight: 'bold'}}>24/7 Ambulance Services</h1>
             <div>
             <center><img src={Image} style={{alignItems:'center', justifyContent:'center'}} alt="Ambulance" width="80%"/></center>
 
-            <p style={{fontSize:'16px', color: 'grey', fontWeight: 'bold', textAlign:'center'}}>With our 24*7 ambulance service, we ensure to make it quick and hassle-free by offering affordable ambulance service.</p>
+            <p style={{fontSize:'16px', color: 'grey', fontWeight: 'bold', textAlign:'center', paddingTop: '5px', margin: '0px'}}>With our 24*7 ambulance service, we ensure to make it quick and hassle-free by offering affordable ambulance service.</p>
+            <p style={{fontSize:'20px', color: '#CA3433', fontWeight: 'bold', textAlign:'center', margin: '0px'}}>Contact : 1800-2063-4040</p>
             </div>
-            <div>
-            <p style={{fontSize:'22px', color: '#CA3433', fontWeight: 'bold', textAlign:'center'}}>Contact : 1800-2063-4040</p>
-            </div>
-
-           <center>
-              <Link className="form-group col-md-20" to="/services/ambulanceinfo">
-                <button type="button" class="btn btn-primary">More Details</button>
+            
+           <center style={{marginBottom: '12px'}}>
+              <Link to="/services/ambulanceinfo" >
+                <button type="button" class="btn btn-primary btn-sm" >More Details</button>
               </Link>
             </center>
             {/* </Content>

@@ -11,7 +11,7 @@ import {InfoCircleOutlined} from '@ant-design/icons';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
-// import "./Dashboard.css";
+import "./Dashboard.css";
 import Popover from '@material-ui/core/Popover';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles, withStyles } from '@material-ui/core/styles';
@@ -19,17 +19,16 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Modal from '@mui/material/Modal';
 import Modalcontent from './modal.js';
+import ModalProvider from './modal_hospital.js';
 import {toast} from 'react-toastify'; 
 import 'react-toastify/dist/ReactToastify.css'; 
-
-// import ttConfig from '../config'
 
 	const modalstyle = {
 	position: 'absolute',
 	top: '50%',
 	left: '50%',
 	transform: 'translate(-50%, -50%)',
-	width: 400,
+	width: 'auto',
 	bgcolor: 'background.paper',
 	border: '2px solid #000',
 	boxShadow: 24,
@@ -53,8 +52,18 @@ export default function PatientDetails() {
     const location = useLocation();
 	const [anchorEl, setAnchorEl] = useState(null);
 	const [modalopen, setmodalopen] = useState(false);
-  	const modalhandleOpen = () => setmodalopen(true);
-  	const modalhandleClose = () => setmodalopen(false);
+	const [showMessage, setshowMessage] = useState(true);
+    const [showMessage2, setshowMessage2] = useState(false);
+
+  	const modalhandleOpen = () => {
+		setmodalopen(true);
+		setshowMessage(true)
+        setshowMessage2(false)
+	}
+
+  	const modalhandleClose = () => {
+		setmodalopen(false);
+	}
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -63,6 +72,12 @@ export default function PatientDetails() {
    const handleClose = () => {
     setAnchorEl(null);
   };
+
+  const handleChange = event => {
+        setshowMessage(false)
+        setshowMessage2(true)
+        event.preventDefault();
+    }
 
   const displayInfo = () => {
 	  return(
@@ -191,28 +206,6 @@ export default function PatientDetails() {
 		}
 	}	
 
-	// const displayRemoteCare = () => {
-	// 	if(orderDetails) {
-	// 		return (
-	// 			<tr>
-	// 				<th style={{ height: '0px', fontWeight: 'bold' }}><Checkbox/></th>
-	// 				<td style={{ height: '0px' }}>Remote Care</td>
-	// 			</tr>
-	// 		)
-	// 	}
-	// }	
-
-	// const displayConsentForm = () => {
-	// 	if(orderDetails) {
-	// 		return (
-	// 			<tr>
-	// 				<th style={{ height: '0px', fontWeight: 'bold' }}><Checkbox/></th>
-	// 				<td style={{ height: '0px' }}>Consent Form</td>
-	// 			</tr>
-	// 		)
-	// 	}
-	// }	
-
 	const displaySSN = () => {
 		if(orderDetails) {
 			return (
@@ -268,17 +261,6 @@ export default function PatientDetails() {
 		}
 	}
 
-	const displayHospital = (row) => {
-		if(row === "d4a30d91-8283-eddc-799c-d3131f7cf2d7") {
-			return (
-				<tr>
-					<th style={{ height: '0px', fontWeight: 'bold' }}><b>Share Details to Provider{displayInfo()}</b></th>
-					<td className="pw" style={{ height: '0px' }}>A BALANCED WAY</td>
-				</tr>
-			)
-		}
-	}
-	
 	const displayAddress = () => {
 		if(orderDetails) {
 			return (
@@ -305,15 +287,15 @@ export default function PatientDetails() {
 		  {
 			return (
 				<span>
-					<button type="button" class="btn btn-primary form-group col-md-20" style={{ float: "right", marginRight:"5px" }} onClick={(e) => { redirectToPatientDetails(e, singlepatientid)}}>View Insights</button>
+					<button type="button" class="btn btn-primary btn-sm" style={{ float: "right", marginRight:"5px", marginBottom: '6px' }} onClick={(e) => { redirectToPatientDetails(e, singlepatientid)}}>View Insights</button>
 				</span>
 			)
 		  }
 		  else{
 			return(
-				<span>
-			  		<button type="button" class="btn btn-primary form-group col-md-20" style={{float: "right", marginRight:"5px", color:"black"}} disabled>View Insights</button>
-				</span> 
+				<>
+			  		{/* <button type="button" class="btn btn-primary form-group col-md-20" style={{float: "right", marginRight:"5px", color:"black"}} disabled>View Insights</button> */}
+				</> 
 			)
 		  }
 		}	
@@ -323,16 +305,16 @@ export default function PatientDetails() {
 		{
 		  return (
 			<span>
-				<button type="button" class="btn btn-primary form-group col-md-20" style={{ float: "right", marginRight:"5px" }} onClick={(e) => { redirectToConsultDetails(e, singlepatientid)}}>View Notifications</button>
+				<button type="button" class="btn btn-primary btn-sm" style={{ float: "right", marginRight:"5px", marginBottom: '6px' }} onClick={(e) => { redirectToConsultDetails(e, singlepatientid)}}>View Notifications</button>
 		  	</span>
 		  )
 		}
 		else
 		{
 			return (
-				<span>
-					<button type="button" class="btn btn-primary form-group col-md-20" style={{float: "right", marginRight:"5px", color:"black"}} disabled>View Notifications</button>
-			  	</span>
+				<>
+					{/* <button type="button" class="btn btn-primary form-group col-md-20" style={{float: "right", marginRight:"5px", color:"black"}} disabled>View Notifications</button> */}
+			  	</>
 			)
 		}
 	}
@@ -340,7 +322,15 @@ export default function PatientDetails() {
 	const displayshare = () => {
 			return (
 				<span>
-					<button type="button" class="btn btn-primary form-group col-md-20" style={{ float: "right", marginRight:"5px" , paddingTop: '5px'}} onClick={(e) => {displaysharetoast()}}>Share Details</button>
+					<button type="button" class="btn btn-primary btn-sm" style={{ float: "right", marginRight:"5px" , paddingTop: '5px'}} onClick={(e) => {handleChange(e)}}>Select Provider</button>
+				</span>
+			)
+		}
+	
+	const displayProviderConsent = () => {
+			return (
+				<span>
+					<button type="button" class="btn btn-primary btn-sm" style={{ float: "right", marginRight:"5px" , paddingTop: '5px'}} onClick={(e) => {displaysharetoast()}}>Share Details</button>
 				</span>
 			)
 		}
@@ -348,6 +338,7 @@ export default function PatientDetails() {
 	const displaysharetoast = () => {
 			modalhandleClose()
 			toast.success("Successfully shared the details with the Provider")
+			setshowMessage2(false)
 		}
 
 	const displayfhirdetails = (id) => {	
@@ -355,19 +346,22 @@ export default function PatientDetails() {
 		{
 		  return (
 			  <div>
-				<button type="button" class="btn btn-primary form-group col-md-20" style={{ float: "right"}} onClick={(e) => { modalhandleOpen()}}>View Monitoring Details</button>
+				<button type="button" class="btn btn-primary btn-sm" style={{ float: "right", marginRight:"5px", marginBottom: '6px' }} onClick={(e) => { modalhandleOpen()}}>View Monitoring Details</button>
 				<Modal
 						open={modalopen}
 						onClose={modalhandleClose}
 						aria-labelledby="modal-modal-title"
 						aria-describedby="modal-modal-description"
+						onClick={handleChange}
 					>
 						<Box sx={modalstyle}>
-						<Typography id="modal-modal-description" sx={{ mt: 2 }}>
-							<Modalcontent/>
+						<Typography id="modal-modal-description" >
+							{showMessage && <Modalcontent/>}
+							{showMessage2 && <ModalProvider/>}
 						</Typography>
-						<Typography id="modal-modal-description" class="d-flex justify-content-center" sx={{ mt: 2 }} style={{ paddingTop: '5px'}}>
-							{displayshare()}
+						<Typography id="modal-modal-description" class="d-flex justify-content-center" style={{ paddingTop: '5px'}}>
+							{showMessage && displayshare()}
+							{showMessage2 && displayProviderConsent()}
 						</Typography>
 						</Box>
 					</Modal>
@@ -377,9 +371,9 @@ export default function PatientDetails() {
 		else
 		{
 			return (
-				<span>
-					<button type="button" class="btn btn-primary form-group col-md-20" style={{float: "right", marginRight:"5px", color:"black"}} disabled>View Monitoring Details</button>
-			  	</span>
+				<>
+					{/* <button type="button" class="btn btn-primary form-group col-md-20" style={{float: "right", marginRight:"5px", color:"black"}} disabled>View Monitoring Details</button> */}
+			  	</>
 			)
 		}
 	}
@@ -392,18 +386,18 @@ export default function PatientDetails() {
 		  if(row === "d4a30d91-8283-eddc-799c-d3131f7cf2d7")
 		  {
 			return (
-				<span>
-			  		<FormControlLabel disabled control={<Checkbox checked name="checkedEvent" style={{color: '#1890ff'}} />} label="Remote Care"/>
-			  		<FormControlLabel disabled control={<Checkbox checked name="checkedEvent" style={{color: '#1890ff'}} />} label="Consent Form"/>
-				</span>
+				<p style={{marginLeft: '5px', width: '400px'}}>
+			  		<FormControlLabel disabled control={<Checkbox checked name="checkedEvent" style={{color: '#1890ff'}} />} style={{float: 'left'}} label="Remote Care"/>
+			  		<FormControlLabel disabled control={<Checkbox checked name="checkedEvent" style={{color: '#1890ff'}} />} style={{float: 'left'}} label="Consent Form"/>
+				</p>
 			)
 		  }
 		  else{
 			return(
-			  	<span>
-					<span><FormControlLabel disabled control={<Checkbox name="checkedEvent"/>} label="Remote Care"/></span>
-			  		<span><FormControlLabel disabled control={<Checkbox name="checkedEvent"/>} label="Consent Form"/></span>
-				</span>
+			  	<p style={{marginLeft: '5px', width: '400px'}}>
+					<FormControlLabel disabled control={<Checkbox name="checkedEvent"/>} style={{float: 'left'}} label="Remote Care"/>
+			  		<FormControlLabel disabled control={<Checkbox name="checkedEvent"/>} style={{float: 'left'}} label="Consent Form"/>
+				</p>
 			)
 		  }
 		}
@@ -430,13 +424,15 @@ export default function PatientDetails() {
 					</LoadingOverlay>
 			
             
-			 <span style={{ fontSize: '18px', fontWeight: 'bold', textAlign:'left', padding: '15px' }}>
-			{/* <Link to="/patientinfo"><ArrowBackIcon style={{color:"black"}}/></Link>&nbsp;&nbsp; */}
-				Patient Details : 
-						{displayfhirdetails(singlepatientid)}
-						{displayNotification(singlepatientid)}
-						{displayViewInsights(singlepatientid)}
+			<span class="navbar justify-content-between">
+				<p class="navbar-brand">Patient Details :</p>
+				<form class="form-inline">
+					{displayfhirdetails(singlepatientid)}
+					{displayNotification(singlepatientid)}
+					{displayViewInsights(singlepatientid)}
+				</form>
 			</span>
+			
 
             <div className="col-lg-12 col-md-12 place-order" style={{textAlign:'left'}}>
                 <div className="padding-bottom20">
@@ -453,20 +449,11 @@ export default function PatientDetails() {
 							{orderDetails && displayPPN()}
 							{orderDetails && displayMRN()}
 							{orderDetails && displayDL()}
-							{orderDetails && displayHospital(singlepatientid)}
 							{orderDetails && displayCheckedBox(singlepatientid)}
                         </tbody>
                     </Table>	
                 </div>
             </div><br/><br/>
-			
-			{/* <div>
-				<h2>Upload Documents</h2>
-				<p style={{color:"red"}}>*Max 5 Documents</p>
-				<a className="form-group col-lg-6 col-md-20" style={{ float: "right", width:"25%"  }}>
-					{/* {<Upload/>}
-				</a>
-			</div> */}
 					
 		</section>
 	</React.Fragment>

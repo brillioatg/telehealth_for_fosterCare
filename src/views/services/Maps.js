@@ -1,102 +1,190 @@
-import React from "react";
+import React, { } from "react";
+import { GoogleApiWrapper } from 'google-maps-react';
+import ttConfig from '../../config.js'
+import Polyline from './Map/Polyline';
 
-const Maps = () => {
-  const mapRef = React.useRef(null);
-  React.useEffect(() => {
-    let google = window.google;
-    let map = mapRef.current;
-    let lat = " 35.5496939";
-    let lng = "-120.7060049";
-    const myLatlng = new google.maps.LatLng(lat, lng);
-    const mapOptions = {
-      zoom: 12,
-      center: myLatlng,
-      scrollwheel: false,
-      zoomControl: true,
-      styles: [
-        {
-          featureType: "water",
-          stylers: [{ saturation: 43 }, { lightness: -11 }, { hue: "#0088ff" }],
-        },
-        {
-          featureType: "road",
-          elementType: "geometry.fill",
-          stylers: [
-            { hue: "#ff0000" },
-            { saturation: -100 },
-            { lightness: 99 },
-          ],
-        },
-        {
-          featureType: "road",
-          elementType: "geometry.stroke",
-          stylers: [{ color: "#808080" }, { lightness: 54 }],
-        },
-        {
-          featureType: "landscape.man_made",
-          elementType: "geometry.fill",
-          stylers: [{ color: "#ece2d9" }],
-        },
-        {
-          featureType: "poi.park",
-          elementType: "geometry.fill",
-          stylers: [{ color: "#ccdca1" }],
-        },
-        {
-          featureType: "road",
-          elementType: "labels.text.fill",
-          stylers: [{ color: "#767676" }],
-        },
-        {
-          featureType: "road",
-          elementType: "labels.text.stroke",
-          stylers: [{ color: "#ffffff" }],
-        },
-        { featureType: "poi", stylers: [{ visibility: "off" }] },
-        {
-          featureType: "landscape.natural",
-          elementType: "geometry.fill",
-          stylers: [{ visibility: "on" }, { color: "#b8cb93" }],
-        },
-        { featureType: "poi.park", stylers: [{ visibility: "on" }] },
-        {
-          featureType: "poi.sports_complex",
-          stylers: [{ visibility: "on" }],
-        },
-        { featureType: "poi.medical", stylers: [{ visibility: "on" }] },
-        {
-          featureType: "poi.business",
-          stylers: [{ visibility: "simplified" }],
-        },
-      ],
+class TraceOrder extends React.Component {
+  constructor(props) {
+    super(props);
+    this.toggle = this.toggle.bind(this);
+    this.state = {
+      showingInfoWindow: false,
+      showingPolyine: false,
+      activeMarker: {},
+      activeMarker1: {},
+      latts: '',
+      lanss: '',
+      lattss: '',
+      lansss: '',
+      markerAddress: '',
+      mapsLoaded: false,
+      map: null,
+      maps: null,
+      geoData: ''
     };
+    this.onMarkerClick1 = this.onMarkerClick1.bind(this);
+    this.onMarkerClick = this.onMarkerClick.bind(this);
+    this.location = this.location.bind(this);
+    this.toggless = this.toggless.bind(this);
+  }
+  path = [
+    { lat: ttConfig.roleassign.mcoordinates.lat, lng: ttConfig.roleassign.mcoordinates.lng },
+    { lat: ttConfig.roleassign.dcoordinates.lat, lng: ttConfig.roleassign.dcoordinates.lng },
+    { lat: ttConfig.roleassign.scoordinates.lat, lng: ttConfig.roleassign.scoordinates.lng }
+  ];
 
-    map = new google.maps.Map(map,  mapOptions);
+  componentDidMount() {
+      console.log('-------------------------------store--------------------------------------------')
+      let storeGeoData = this.getMapGeoLocation('San Francisco, CA, USA');
+      console.log('-------------------------------distributor--------------------------------------------')
 
-    const marker = new google.maps.Marker({
-      position: myLatlng,
+      this.setState({ storeGeoData: storeGeoData });
+
+      if(storeGeoData) {
+            let  newMarkers =  [
+              {lat: storeGeoData.lat, lng: storeGeoData.lng},
+            ];
+            // this.props.markers = newMarkers;
+            this.setState({ geoData: newMarkers })
+          }
+  }
+  onMarkerClick = (props, marker, e) => {
+    this.setState({
+      selectedPlace: props,
+      activeMarker: marker,
+      showingInfoWindow: true
+    });
+  }
+  onMapClick = (props) => {
+    if (this.state.showingInfoWindow) {
+      this.setState({
+        showingInfoWindow: false,
+        activeMarker: null
+      });
+    }
+  }
+  onMarkerClick1 = (props, marker, e) => {
+    this.setState({
+      selectedPlace: props,
+      activeMarker1: marker,
+      showingInfoWindow: true,
+    });
+  }
+  onMarkerClick2 = (props, marker, e) => {
+    this.setState({
+      selectedPlace: props,
+      activeMarker1: marker,
+      showingInfoWindow: true,
+    });
+  }
+  componentWillUnmount() {
+    if (this.timerHandle) {
+      clearTimeout(this.timerHandle);
+      this.timerHandle = 0;
+    }
+  }
+
+  toggle = () => {
+    this.setState((prevState) => {
+      return { dropdownOpen: !prevState.dropdownOpen };
+    });
+  }
+
+  location = (lat, lng) => {
+    this.setState({ latts: lat, lanss: lng })
+  }
+  toggless() {
+    this.setState((prevState) => {
+      return { isOpen: !this.state.isOpen };
+    });
+  }
+   onMapLoaded (map, maps) {
+    this.fitBounds(map, maps)
+
+    this.setState({
+      ...this.state,
+      mapsLoaded: true,
       map: map,
-      animation: google.maps.Animation.DROP,
-      title: "Material Dashboard React!",
+      maps: maps
+    })
+  }
+
+  fitBounds (map, maps) {
+    var bounds = new maps.LatLngBounds()
+
+    var latLang = (this.state.geoData) ? this.state.geoData : this.props.markers;
+
+    for (let marker of latLang) {
+      bounds.extend(
+        new maps.LatLng(marker.lat, marker.lng)
+      )
+    }
+    map.fitBounds(bounds)
+  }
+
+  afterMapLoadChanges () {
+    console.log('---------------------- GEO DATA -----------------------')
+    console.log(this.state.geoData)
+    console.log('---------------------- GEO DATA -----------------------')
+
+    return (
+      <div style={{display: 'none'}}>
+        <Polyline
+          map={this.state.map}
+          maps={this.state.maps}
+          markers={(this.state.geoData) ? this.state.geoData :  this.props.markers} />
+      </div>
+    )
+  }
+
+  getMapGeoLocation(address) {
+    let url = ttConfig.secretkey.mapQuestGeoCodeUrl + '&location=' + address
+    let latlang = {};
+    fetch(url, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    }).then((response) => {
+      return response.json();
+    }).then((geoData) => {
+        let latlang = geoData.results[0]
+        if(latlang.locations[0].latLng) {
+          console.log(latlang);
+          latlang = latlang.locations[0].latLng;
+        }
     });
+    return latlang;
+  }
 
-    const contentString =
-      '<div class="info-window-content"><h2>Material Dashboard React</h2>' +
-      "<p>A premium Admin for React, Material-UI, and React Hooks.</p></div>";
+ 
+  render() {
+    const { posts } = this.state;
+    console.log(this.state.orderDetails)
 
-    const infowindow = new google.maps.InfoWindow({
-      content: contentString,
-    });
+    let storeAddress = ttConfig.location.store;
+    let distAddress = ttConfig.location.distributor;
+    let manufacturerAddress = ttConfig.location.manufacturer;
 
-    google.maps.event.addListener(marker, "click", function () {
-      infowindow.open(map, marker);
-    });
-  });
-  return (
-    <>
-      <div style={{ height: `100vh` }} ref={mapRef}></div>
-    </>
-  );
-};
+    let mapUrl = ttConfig.secretkey.mapQuestStaticMapUrl + manufacturerAddress + '|marker-sm-F8E71C-417505-A||' + distAddress + '|marker-sm-F8E71C-000000-B||' + storeAddress + '|marker-sm-F8E71C-c20000-C&shape=' + manufacturerAddress + '|' + distAddress + '|' + storeAddress + '&type=map&size=900,200@2x';
+    console.log(mapUrl);
+    return (
+      <div >
+              <img src={mapUrl} alt="Trace Map" style={{width: '100%', height: '350px'}} />
+      </div>
+    );
+  }
+}
 
-export default Maps;
+TraceOrder.defaultProps = {
+  markers: [
+    {lat: 37.773972, lng: -122.431297}
+  ],
+  center: [42.3418054, -71.0763656],
+  zoom: 4
+}
+
+export default GoogleApiWrapper({
+  apiKey: ttConfig.secretkey.mapkey
+})(TraceOrder);
+
