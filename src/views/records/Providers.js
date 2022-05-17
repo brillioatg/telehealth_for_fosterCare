@@ -135,7 +135,7 @@ export default function ProviderInform() {
               method: 'GET'
             };
       
-            fetch("https://tthvndwmkh.execute-api.us-east-1.amazonaws.com/rpm-api?bucket=rpm-aws-synthea&key=providerinformation.json", requestOptions)
+            fetch("https://q5py3vwrrf.execute-api.us-west-1.amazonaws.com/records/providerinfo?bucket=telehealth-aws-synthea&key=providerinformation.json", requestOptions)
             .then((resp) => resp.json())
             .then((response) => {
               setdata(response.data)

@@ -22,6 +22,12 @@ const _nav =  [
   },
   {
     _tag: 'CSidebarNavItem',
+    name: 'Play Zone',
+    to: '/3d/zone',
+    icon: 'cil-hospital',
+  },
+  {
+    _tag: 'CSidebarNavItem',
     name: 'Care Insights',
     to: '/insights',
     icon: 'cil-puzzle',
@@ -81,7 +87,13 @@ const _nav =  [
   },
   {
     _tag: 'CSidebarNavItem',
-    name: 'Video Consultations',
+    name: 'Video Consultation',
+    to: '/notifications/video-consultation',
+    icon: 'cil-bell',
+  },
+  {
+    _tag: 'CSidebarNavItem',
+    name: 'Calender Notification',
     to: '/notifications',
     icon: 'cil-bell',
     badge: {

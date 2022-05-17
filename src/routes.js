@@ -18,6 +18,8 @@ const AmbulanceService = React.lazy(() => import('./views/services/AmbulanceServ
 const AmbulanceInform = React.lazy(() => import('./views/services/AmbulanceInform'));
 const Ambulancedetails = React.lazy(() => import('./views/services/AmbulanceDetails'));
 const EmailNotification = React.lazy(() => import('./views/notifications/EmailNotifications'));
+const playzone = React.lazy(() => import('./views/records/playzone'));
+const video = React.lazy(() => import('./views/notifications/videoconsultation'));
 // const Modal = React.lazy(() => import('./views/records/modal.js'));
 
 const routes = [
@@ -25,12 +27,14 @@ const routes = [
   { path: '/dashboard', name: 'Dashboard', component: Dashboard },
   { path: '/records/patients', name: 'Patients', component: Patients, exact: true },
   { path: '/records/providers', name: 'Providers', component: Providers, exact: true },
+  { path: '/3d/zone', name: 'playzone', component: playzone, exact: true },
   { path: '/records/patientdetails', name: 'Patientdetails', component: PatientDetails, exact: true },
   { path: '/insights', name: 'insights', component: Continuous, exact: true },
   // { path: '/insights/preventive', name: 'insights', component: Preventive, exact: true },
   { path: '/device/devices', name: 'Devices', component: Device, exact: true },
   // { path: '/reports', name: 'Reports', component: Reports, exact: true },
   // { path: '/Modal', name: 'Modal', component: Modal },
+  { path: '/notifications/video-consultation', name: 'Email', component: video, exact: true },
   { path: '/notifications/email', name: 'Email', component: EmailNotification, exact: true },
   { path: '/notifications', name: 'Notifications', component: Notification, exact: true },
   { path: '/services/ambulance', name: 'AmbulanceService', component: AmbulanceService, exact: true },

@@ -104,7 +104,7 @@ export default function PatientInform() {
         method: 'GET'
       };
 
-      fetch("https://tthvndwmkh.execute-api.us-east-1.amazonaws.com/rpm-api?bucket=rpm-aws-synthea&key=patientrecords.json", requestOptions)
+      fetch("https://ykdx577re5.execute-api.us-west-1.amazonaws.com/", requestOptions)
       .then((resp) => resp.json())
       .then((response) => {
         setdata(response.data)
