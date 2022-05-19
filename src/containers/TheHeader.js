@@ -8,26 +8,25 @@ import {
   CHeaderNavItem,
   CHeaderNavLink,
   CSubheader,
-  CBreadcrumbRouter,
-  CLink
-} from '@coreui/react'
-import CIcon from '@coreui/icons-react'
-import brillioimg from './brillio-logo.png'
-
+  CBreadcrumbRouter} from '@coreui/react';
+import { useHistory } from "react-router-dom";
 
 // routes config
 import routes from '../routes'
 
-import { 
-  TheHeaderDropdown,
-  TheHeaderDropdownMssg,
-  TheHeaderDropdownNotif,
-  TheHeaderDropdownTasks
-}  from './index'
+import { TheHeaderDropdown }  from './index'
 
 const TheHeader = () => {
   const dispatch = useDispatch()
   const sidebarShow = useSelector(state => state.sidebarShow)
+  const isLoggedIn = (localStorage.getItem("user")) ? true : false;
+  const username = isLoggedIn ? localStorage.getItem("user") : "";
+  const userole = isLoggedIn ? localStorage.getItem("role") : "";
+  let history = useHistory();
+
+  if(!isLoggedIn) {
+    history.push("login");
+  }
 
   const toggleSidebar = () => {
     const val = [true, 'responsive'].includes(sidebarShow) ? false : 'responsive'

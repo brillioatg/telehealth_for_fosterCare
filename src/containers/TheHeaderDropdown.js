@@ -1,17 +1,25 @@
 import React from 'react'
 import {
-  CBadge,
   CDropdown,
   CDropdownItem,
   CDropdownMenu,
-  CDropdownToggle,
-  CImg
-} from '@coreui/react'
+  CDropdownToggle} from '@coreui/react'
 import CIcon from '@coreui/icons-react'
-import Avatar from '@material-ui/core/Avatar';
 import user from '../assets/users/user5.jpg'
+import { useHistory } from "react-router-dom";
 
 const TheHeaderDropdown = () => {
+  const isLoggedIn = (localStorage.getItem("user")) ? true : false;
+  const username = isLoggedIn ? localStorage.getItem("user") : "";
+  const userrole = isLoggedIn ? localStorage.getItem("role") : "";
+  let history = useHistory();
+  const logout = () =>{ 
+    localStorage.setItem("user", "")
+    localStorage.setItem("role", "")
+    // let path = 'dashboard'; 
+    history.push("dashboard");
+  }
+
   return (
     <CDropdown
       inNav
@@ -19,7 +27,7 @@ const TheHeaderDropdown = () => {
       direction="down"
     >
       <CDropdownToggle className="c-header-nav-link" caret={false}>
-      <span style={{marginRight:'15px'}}><b>Welcome Steve (Case Worker)</b></span> 
+      <span style={{marginRight:'15px'}}><b>Welcome {username} ({userrole})</b></span> 
         <div className="c-avatar">
           <img alt="Remy Sharp" height="45px" src={user} />
         </div>
@@ -33,7 +41,7 @@ const TheHeaderDropdown = () => {
         >
           <strong>Account</strong>
         </CDropdownItem>
-        <CDropdownItem>
+        <CDropdownItem onClick={logout}>
           <CIcon name="cil-bell" className="mfe-2" />
           Logout
         </CDropdownItem>
