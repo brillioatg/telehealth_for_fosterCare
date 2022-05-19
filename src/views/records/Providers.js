@@ -147,7 +147,7 @@ export default function ProviderInform() {
         useEffect(() => { 
 
            fetchproviderdata();
-        })
+        },[])
 
     return (
       <>
@@ -240,10 +240,10 @@ export default function ProviderInform() {
                 <TableRow style={{ padding: '0px' }}>
                 {/* <TableCell align="center" style={{ fontWeight: 'bold', width: '400px' }}>Id</TableCell> */}
                 <TableCell style={{ fontWeight: 'bold'}}>Code</TableCell>
+                <TableCell style={{ fontWeight: 'bold'}}>Specialist</TableCell>
+                <TableCell style={{ fontWeight: 'bold'}}>Specialization</TableCell>
                 <TableCell style={{ fontWeight: 'bold'}}>Contact No</TableCell>
                 <TableCell style={{ fontWeight: 'bold'}}>Address</TableCell>
-                <TableCell style={{ fontWeight: 'bold'}}>Specialization</TableCell>
-                <TableCell style={{ fontWeight: 'bold'}}>Specialist</TableCell>
                 </TableRow>
               </TableHead>
 
@@ -268,10 +268,10 @@ export default function ProviderInform() {
                       <StyledTableRow>
                         {/* <TableCell align="left">{row.id}</TableCell> */}
                         <StyledTableCell align="left">{row.name}</StyledTableCell>
+                        <StyledTableCell align="left">{row.specialist}</StyledTableCell>
+                        <StyledTableCell align="left">{row.special}</StyledTableCell>
                         <StyledTableCell align="left">{row.phone}</StyledTableCell>
                         <StyledTableCell align="left">{row.address}</StyledTableCell>
-                        <StyledTableCell align="left">{row.special}</StyledTableCell>
-                        <StyledTableCell align="left">{row.specialist}</StyledTableCell>
                       </StyledTableRow>
                     )
                   })

@@ -19,8 +19,8 @@ const WidgetsDropdown = () => {
       <CCol sm="6" lg="3">
         <CWidgetDropdown
           color="gradient-primary"
-          header="9999+"
-          text="Total Patients"
+          header="999+"
+          text="Total Foster children"
           footerSlot={
             <ChartLineSimple
               pointed
@@ -39,8 +39,8 @@ const WidgetsDropdown = () => {
       <CCol sm="6" lg="3">
         <CWidgetDropdown
           color="gradient-info"
-          header="2500"
-          text="Low Risk Patients"
+          header="650"
+          text="Low Risk Foster children"
           footerSlot={
             <ChartLineSimple
               pointed
@@ -60,8 +60,8 @@ const WidgetsDropdown = () => {
       <CCol sm="6" lg="3">
         <CWidgetDropdown
           color="gradient-warning"
-          header="5500"
-          text="Medium Risk Patients"
+          header="280"
+          text="Medium risk Foster children"
           footerSlot={
             <ChartLineSimple
               className="mt-3"
@@ -81,8 +81,8 @@ const WidgetsDropdown = () => {
       <CCol sm="6" lg="3">
         <CWidgetDropdown
           color="gradient-danger"
-          header="2000"
-          text="High Risk Patients"
+          header="80"
+          text="Hish risk Foster children"
           footerSlot={
             <ChartBarSimple
               className="mt-3 mx-3"

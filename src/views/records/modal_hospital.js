@@ -56,7 +56,7 @@ export default function ProviderInform() {
                             <StyledTableCell align="left">PCP9755</StyledTableCell>
                             <StyledTableCell align="left">978-580-1342</StyledTableCell>
                             <StyledTableCell align="left">7 BARON WAY</StyledTableCell>
-                            <StyledTableCell align="left">Otolaryngologist</StyledTableCell>
+                            <StyledTableCell align="left">Child Care Specialist</StyledTableCell>
                             <StyledTableCell align="left">Dr.Lorenzo669 Rempel203</StyledTableCell>
                             <StyledTableCell align="center">
                                 <Checkbox value="PCP9755" />

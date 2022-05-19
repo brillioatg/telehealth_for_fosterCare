@@ -22,6 +22,19 @@ import Modalcontent from './modal.js';
 import ModalProvider from './modal_hospital.js';
 import {toast} from 'react-toastify'; 
 import 'react-toastify/dist/ReactToastify.css'; 
+import personimage from '../../assets/users/user1.jpg'
+import {
+	Card,
+	CardImg,
+	CardText,
+	CardBody,
+	CardTitle,
+	CardSubtitle,
+	CardGroup,
+	Row,
+	Col,
+  } from "reactstrap";
+import Blog from '../records/Blog'
 
 	const modalstyle = {
 	position: 'absolute',
@@ -117,7 +130,7 @@ export default function PatientDetails() {
 		// times=location.search.split('"')[1]	
 		stat = location.search.split(':')[1]	// console.log(stat)
 		// datess=location.search.split('}')[1]
-		let singlepatientURL = 'https://tthvndwmkh.execute-api.us-east-1.amazonaws.com/rpm-api?bucket=rpm-aws-synthea&key=patientrecords.json'
+		let singlepatientURL = 'https://6n300lt6x6.execute-api.us-west-1.amazonaws.com/records/myfunction?bucket=telehealth-aws-synthea&key=telehealth-aws-synthea.json'
 		
 		console.log('---------------------patientDetailsUrl----------------------------------')
 		console.log(singlepatientURL)
@@ -283,7 +296,7 @@ export default function PatientDetails() {
     }
 
 	const displayViewInsights = (id) => {
-		  if(id === "d4a30d91-8283-eddc-799c-d3131f7cf2d7")
+		  if(id === "93c19644-0d49-8d54-e765-ce8fb0bb2971" || id === "5be71bc3-c641-111b-bc57-2fb9b58eba8d")
 		  {
 			return (
 				<span>
@@ -301,7 +314,7 @@ export default function PatientDetails() {
 		}	
 
 	const displayNotification = (id) => {	
-		if(id === "d4a30d91-8283-eddc-799c-d3131f7cf2d7")
+		if(id === "93c19644-0d49-8d54-e765-ce8fb0bb2971" || id === "5be71bc3-c641-111b-bc57-2fb9b58eba8d")
 		{
 		  return (
 			<span>
@@ -342,11 +355,11 @@ export default function PatientDetails() {
 		}
 
 	const displayfhirdetails = (id) => {	
-		if(id === "d4a30d91-8283-eddc-799c-d3131f7cf2d7")
+		if(id === "93c19644-0d49-8d54-e765-ce8fb0bb2971" || id === "5be71bc3-c641-111b-bc57-2fb9b58eba8d")
 		{
 		  return (
 			  <div>
-				<button type="button" class="btn btn-primary btn-sm" style={{ float: "right", marginRight:"5px", marginBottom: '6px' }} onClick={(e) => { modalhandleOpen()}}>View Monitoring Details</button>
+				<button type="button" class="btn btn-primary btn-sm" style={{ float: "right", marginRight:"5px", marginBottom: '6px' }} onClick={(e) => { modalhandleOpen()}}>Vital Details</button>
 				<Modal
 						open={modalopen}
 						onClose={modalhandleClose}
@@ -383,7 +396,7 @@ export default function PatientDetails() {
 	const displayCheckedBox = (row) => {
 		// console.log("--------------row")
 		// console.log(row);
-		  if(row === "d4a30d91-8283-eddc-799c-d3131f7cf2d7")
+		  if(row === "93c19644-0d49-8d54-e765-ce8fb0bb2971" || row === "5be71bc3-c641-111b-bc57-2fb9b58eba8d")
 		  {
 			return (
 				<p style={{marginLeft: '5px', width: '400px'}}>
@@ -431,6 +444,7 @@ export default function PatientDetails() {
 					{displayNotification(singlepatientid)}
 					{displayViewInsights(singlepatientid)}
 				</form>
+				{/* <img src={personimage}/> */}
 			</span>
 			
 
@@ -454,7 +468,7 @@ export default function PatientDetails() {
                     </Table>	
                 </div>
             </div><br/><br/>
-					
+			<Blog data={orderDetails}/>
 		</section>
 	</React.Fragment>
         </div>

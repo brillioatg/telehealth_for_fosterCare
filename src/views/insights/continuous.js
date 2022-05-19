@@ -72,7 +72,7 @@ export default function Insights() {
   return (
     <div>
       <Charts/>
-      <p style={{color:'red'}}>Note: Click on the Graph header<strong>(Continuous Care, Preventive Care)</strong> to get a detailed View for the Care Insights</p>
+      <p style={{color:'red'}}>Note: Click on the Graph header<strong>(Continuous Care, Continuous Remote Care)</strong> to get a detailed View for the Care Insights</p>
     </div>
   )
 }

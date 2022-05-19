@@ -105,7 +105,7 @@ export default function ModalInform() {
 
     return (
       <>
-            <p style={{fontSize:'22px', textAlign:'center'}}><strong>Patient Monitoring Details</strong></p>
+            <p style={{fontSize:'22px', textAlign:'center'}}><strong>Patient Vitals</strong></p>
 
           <Paper>
           <TableContainer>
@@ -123,9 +123,9 @@ export default function ModalInform() {
                     return(
                       <StyledTableRow>
                         {/* <TableCell align="left">{row.id}</TableCell> */}
-                        <StyledTableCell align="left">Arthur650 Ortiz186</StyledTableCell>
+                        <StyledTableCell align="left">Arthur650 Jacobs452</StyledTableCell>
                         <StyledTableCell align="left">{(row.resource.text.div).replace(", datetime: 2021-09-09 10:29:18.316868", "")}</StyledTableCell>
-                        <StyledTableCell align="left">2021-09-09</StyledTableCell>
+                        <StyledTableCell align="left">2022-05-19</StyledTableCell>
                       </StyledTableRow>
                     )
                   })

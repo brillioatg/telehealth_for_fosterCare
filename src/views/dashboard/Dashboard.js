@@ -32,8 +32,8 @@ const Dashboard = () => {
         <CCardBody>
           <CRow>
             <CCol sm="5">
-              <h3 id="traffic" className="card-title mb-0">Preventive Care</h3>
-              <div className="small text-muted">September 2021</div>
+              <h3 id="traffic" className="card-title mb-0">Continuous Remote Care</h3>
+              <div>Continuous care monitoring for the Foster child</div>
             </CCol>
             <CCol sm="7" className="d-none d-md-block">
               {/* <CButton color="primary" className="float-right">

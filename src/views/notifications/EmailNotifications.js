@@ -26,11 +26,14 @@ import {toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css'; 
 import { alpha} from '@material-ui/core/styles';
 import SearchIcon from '@material-ui/icons/Search';
+import emailjs from '@emailjs/browser';
 import {
     CBadge
   } from '@coreui/react'
 import config from '../../config.js';
+import Calendar from './calendar';
 var AWS = require('aws-sdk');
+
 
 export default function EmailNotify() {
     const useStyles = makeStyles((theme) => ({
@@ -118,7 +121,7 @@ export default function EmailNotify() {
 
 
         useEffect(() => { 
-          const res= fetch("https://tthvndwmkh.execute-api.us-east-1.amazonaws.com/rpm-api?bucket=rpm-aws-synthea&key=patientrecords.json", {
+          const res= fetch("https://ykdx577re5.execute-api.us-west-1.amazonaws.com/", {
             method: 'GET',
           }).then(resp => resp.json()
           ).then(resp=>{
@@ -155,7 +158,13 @@ export default function EmailNotify() {
                         shortness of breath
                         persistent cough
                         Thanking You
-                        Hospital Management `, 
+                        Hospital Management 
+                        
+                        Please Join the meeting with the given link below
+                        
+                        Location:'https://us04web.zoom.us/j/71832413497?pwd=N7RTCi_tdX0RFn1aZ6UeNZAR1v3YMI.1'`, 
+
+                        
             Subject: `Connect with ${doctor}`,
             TopicArn: config.snsemail.topic
           };
@@ -170,6 +179,8 @@ export default function EmailNotify() {
               function(err) {
               console.error(err, err.stack);
             });
+
+            <Calendar value={doctor}/>
 
         }
 

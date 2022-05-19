@@ -16,6 +16,7 @@ import Checkbox from '@material-ui/core/Checkbox';
 import {withStyles } from '@material-ui/core/styles';
 import Avatar from '@material-ui/core/Avatar';
 import { BsFillPersonFill } from "react-icons/bs";
+import personavatar from '../../assets/users/user1.jpg'
 
 export default function Row(props) {
 
@@ -48,7 +49,7 @@ export default function Row(props) {
   const displayCheckedBox = (row) => {
     console.log("--------------row")
     console.log(row);
-      if(row === "d4a30d91-8283-eddc-799c-d3131f7cf2d7")
+      if(row === "93c19644-0d49-8d54-e765-ce8fb0bb2971" || row === "5be71bc3-c641-111b-bc57-2fb9b58eba8d")
       // if(row) 
       {
         return (
@@ -74,7 +75,13 @@ export default function Row(props) {
       
       {/* <TableCell>{row.id}</TableCell> */}
       <TableCell align="left" component="th" scope="row" style={{width:"25%"}}>
-      <BsFillPersonFill size={25}/> &nbsp;&nbsp;
+      <img
+          src={personavatar}
+          className="rounded-circle"
+          alt="avatar"
+          width="45"
+          height="45"
+        /> &nbsp;&nbsp;
         <a
             onClick={(e) => { redirectToPatientDetails(e, row.id)}}
             target="_blank"

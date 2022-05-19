@@ -104,7 +104,7 @@ export default function PatientInform() {
         method: 'GET'
       };
 
-      fetch("https://ykdx577re5.execute-api.us-west-1.amazonaws.com/", requestOptions)
+      fetch("https://6n300lt6x6.execute-api.us-west-1.amazonaws.com/records/myfunction?bucket=telehealth-aws-synthea&key=telehealth-aws-synthea.json", requestOptions)
       .then((resp) => resp.json())
       .then((response) => {
         setdata(response.data)
@@ -130,7 +130,7 @@ export default function PatientInform() {
       // })
 
       fetchpatientdata();
-  })
+  },[])
 
   console.log(data)
 

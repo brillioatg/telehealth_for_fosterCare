@@ -17,13 +17,13 @@ const MainChartExample = attributes => {
     const data2 = []
     const data3 = []
     for (let i = 0; i <= elements; i++) {
-      data1.push(random(50, 200))
-      data2.push(random(80, 100))
+      data1.push(random(85, 106))
+      data2.push(random(90, 105))
       data3.push(65)
     }
     return [
       {
-        label: 'My First dataset',
+        label: 'Oxygen Value',
         backgroundColor: hexToRgba(brandInfo, 10),
         borderColor: brandInfo,
         pointHoverBackgroundColor: brandInfo,
@@ -31,22 +31,22 @@ const MainChartExample = attributes => {
         data: data1
       },
       {
-        label: 'My Second dataset',
+        label: 'Temperature Value',
         backgroundColor: 'transparent',
         borderColor: brandSuccess,
         pointHoverBackgroundColor: brandSuccess,
         borderWidth: 2,
         data: data2
       },
-      {
-        label: 'My Third dataset',
-        backgroundColor: 'transparent',
-        borderColor: brandDanger,
-        pointHoverBackgroundColor: brandDanger,
-        borderWidth: 1,
-        borderDash: [8, 5],
-        data: data3
-      }
+      // {
+      //   label: 'My Third dataset',
+      //   backgroundColor: 'transparent',
+      //   borderColor: brandDanger,
+      //   pointHoverBackgroundColor: brandDanger,
+      //   borderWidth: 1,
+      //   borderDash: [8, 5],
+      //   data: data3
+      // }
     ]
   })()
 
@@ -67,7 +67,8 @@ const MainChartExample = attributes => {
               beginAtZero: true,
               maxTicksLimit: 5,
               stepSize: Math.ceil(250 / 5),
-              max: 250
+              max: 250,
+              label:'No of Patients'
             },
             gridLines: {
               display: true

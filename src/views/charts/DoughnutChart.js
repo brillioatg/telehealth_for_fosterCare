@@ -76,7 +76,7 @@ const Charts = () => {
       {/* <a href="https://us-east-1.quicksight.aws.amazon.com/sn/dashboards/9f786544-dc07-4370-8949-c848fcb21ed5/views/bb2141dd-052b-4b19-b0f4-a1ce3d9032a0" target="_blank"> */}
       <CCard>
         <CCardHeader style={{backgroundColor:'#0A2533', color:'white'}}>
-         <h3 style={{ color:'white'}}>Preventive Care</h3> 
+         <h3 style={{ color:'white'}}>Continuous Remote Care</h3> 
         </CCardHeader>
         <CCardBody style={{backgroundColor:'#0A2533', color:'white'}}>
           <CChartDoughnut
