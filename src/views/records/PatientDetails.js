@@ -296,22 +296,23 @@ export default function PatientDetails() {
     }
 
 	const displayViewInsights = (id) => {
-		  if(id === "93c19644-0d49-8d54-e765-ce8fb0bb2971" || id === "5be71bc3-c641-111b-bc57-2fb9b58eba8d")
-		  {
-			return (
-				<span>
-					<button type="button" class="btn btn-primary btn-sm" style={{ float: "right", marginRight:"5px", marginBottom: '6px' }} onClick={(e) => { redirectToPatientDetails(e, singlepatientid)}}>View Insights</button>
-				</span>
-			)
-		  }
-		  else{
+		//   if(id === "93c19644-0d49-8d54-e765-ce8fb0bb2971" || id === "5be71bc3-c641-111b-bc57-2fb9b58eba8d")
+		//   {
+		// 	return (
+		// 		<span>
+		// 			<button type="button" class="btn btn-primary btn-sm" style={{ float: "right", marginRight:"5px", marginBottom: '6px' }} onClick={(e) => { redirectToPatientDetails(e, singlepatientid)}}>View Insights</button>
+		// 		</span>
+		// 	)
+		//   }
+		//   else{
 			return(
 				<>
-			  		{/* <button type="button" class="btn btn-primary form-group col-md-20" style={{float: "right", marginRight:"5px", color:"black"}} disabled>View Insights</button> */}
+			  		<a href="https://us-east-1.quicksight.aws.amazon.com/sn/accounts/923024739777/dashboards/869a699e-7115-4920-b124-008878aabb6f?directory_alias=telehealth-fostercare" target="_blank">
+					  	<button type="button" class="btn btn-primary btn-sm" style={{float: "right", marginRight:"5px", marginBottom: '6px'}} disabled>View Insights</button>
+					</a>
 				</> 
 			)
-		  }
-		}	
+	}
 
 	const displayNotification = (id) => {	
 		if(id === "93c19644-0d49-8d54-e765-ce8fb0bb2971" || id === "5be71bc3-c641-111b-bc57-2fb9b58eba8d")

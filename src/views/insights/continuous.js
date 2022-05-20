@@ -71,6 +71,8 @@ export default function Insights() {
 
   return (
     <div>
+      {/* <a href="https://us-east-1.quicksight.aws.amazon.com/sn/accounts/923024739777/dashboards/869a699e-7115-4920-b124-008878aabb6f?directory_alias=telehealth-fostercare">Click here</a> */}
+      {/* <iframe width="960" height="720" src="https://us-east-1.quicksight.aws.amazon.com/sn/accounts/923024739777/dashboards/869a699e-7115-4920-b124-008878aabb6f?directory_alias=telehealth-fostercare"></iframe> */}
       <Charts/>
       <p style={{color:'red'}}>Note: Click on the Graph header<strong>(Continuous Care, Continuous Remote Care)</strong> to get a detailed View for the Care Insights</p>
     </div>

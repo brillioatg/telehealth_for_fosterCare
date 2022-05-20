@@ -234,7 +234,7 @@ export default function EmailNotify() {
                 {/* <TableCell align="center" style={{ fontWeight: 'bold', width: '400px' }}>Id</TableCell> */}
                 <TableCell style={{ fontWeight: 'bold'}}>Patient ID</TableCell>
                 <TableCell style={{ fontWeight: 'bold'}}>Patient Name</TableCell>
-                {/* <TableCell style={{ fontWeight: 'bold'}}>Patient Email</TableCell> */}
+                <TableCell style={{ fontWeight: 'bold'}}>Patient Email</TableCell>
                 <TableCell style={{ fontWeight: 'bold'}}>Specialist</TableCell>
                 <TableCell style={{ fontWeight: 'bold'}}>Risk Score</TableCell>
                 <TableCell style={{ fontWeight: 'bold'}}>Email Notifications</TableCell>
@@ -260,7 +260,7 @@ export default function EmailNotify() {
                       <StyledTableRow>
                         <StyledTableCell align="left">{row.id}</StyledTableCell>
                         <StyledTableCell align="left">{row.name}</StyledTableCell>
-                        {/* <StyledTableCell align="left">{row.email}</StyledTableCell> */}
+                        <StyledTableCell align="left">{row.email}</StyledTableCell>
                         <StyledTableCell align="left">{row.doctor}</StyledTableCell>
                         <StyledTableCell>{riskscore(row.cluster_label)}</StyledTableCell>
                         <StyledTableCell key={index}> <button key={index} type="button" class="btn btn-primary" onClick={() => sendemail(row.name, row.doctor, row.cluster_label)}>Send</button></StyledTableCell>

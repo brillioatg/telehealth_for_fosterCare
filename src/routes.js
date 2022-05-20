@@ -2,6 +2,7 @@ import React from 'react';
 
 const Dashboard = React.lazy(() => import('./views/dashboard/Dashboard'));
 const Patients = React.lazy(() => import('./views/records/Patients'));
+const ArthurPatient = React.lazy(() => import('./views/records/ArthurPatient'));
 const Providers = React.lazy(() => import('./views/records/Providers'));
 const PatientDetails = React.lazy(() => import('./views/records/PatientDetails'));
 const Reports = React.lazy(() => import('./views/reports/Reports.js'));
@@ -26,6 +27,7 @@ const routes = [
   { path: '/', exact: true, name: 'Home' },
   { path: '/dashboard', name: 'Dashboard', component: Dashboard },
   { path: '/records/patients', name: 'Patients', component: Patients, exact: true },
+  { path: '/records/patientinfo', name: 'PatientInfo', component: ArthurPatient, exact: true },
   { path: '/records/providers', name: 'Providers', component: Providers, exact: true },
   { path: '/3d/zone', name: 'playzone', component: playzone, exact: true },
   { path: '/records/patientdetails', name: 'Patientdetails', component: PatientDetails, exact: true },

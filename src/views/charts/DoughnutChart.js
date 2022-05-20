@@ -75,9 +75,11 @@ const Charts = () => {
 
       {/* <a href="https://us-east-1.quicksight.aws.amazon.com/sn/dashboards/9f786544-dc07-4370-8949-c848fcb21ed5/views/bb2141dd-052b-4b19-b0f4-a1ce3d9032a0" target="_blank"> */}
       <CCard>
+      <a href="https://us-east-1.quicksight.aws.amazon.com/sn/accounts/923024739777/dashboards/869a699e-7115-4920-b124-008878aabb6f?directory_alias=telehealth-fostercare">
         <CCardHeader style={{backgroundColor:'#0A2533', color:'white'}}>
          <h3 style={{ color:'white'}}>Continuous Remote Care</h3> 
         </CCardHeader>
+         </a>
         <CCardBody style={{backgroundColor:'#0A2533', color:'white'}}>
           <CChartDoughnut
             datasets={[

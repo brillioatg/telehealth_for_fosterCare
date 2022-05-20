@@ -24,6 +24,7 @@ import MainChartExample from '../charts/MainChartExample.js'
 const WidgetsDropdown = lazy(() => import('../widgets/WidgetsDropdown.js'))
 // const WidgetsBrand = lazy(() => import('../widgets/WidgetsBrand.js'))
 
+
 const Dashboard = () => {
   return (
     <>
@@ -32,8 +33,10 @@ const Dashboard = () => {
         <CCardBody>
           <CRow>
             <CCol sm="5">
-              <h3 id="traffic" className="card-title mb-0">Continuous Remote Care</h3>
-              <div>Continuous care monitoring for the Foster child</div>
+              <a target="_blank" href="https://us-east-1.quicksight.aws.amazon.com/sn/accounts/923024739777/dashboards/dbb9c6ac-730d-4cb4-8e95-9c110f75c00e?directory_alias=telehealth-fostercare">
+                <h3 id="traffic" className="card-title mb-0">Preventive Care</h3>
+              </a>
+              <div>Preventive care for the Foster children</div>
             </CCol>
             <CCol sm="7" className="d-none d-md-block">
               {/* <CButton color="primary" className="float-right">
@@ -59,23 +62,23 @@ const Dashboard = () => {
         </CCardBody>
       <CCardGroup className="mb-4">
         <CWidgetProgressIcon
-          header="850"
-          text="New Patients"
+          header="50"
+          text=" Scheduled Appointments"
           color="gradient-info"
           inverse
         >
           <CIcon name="cil-people" height="36"/>
         </CWidgetProgressIcon>
         <CWidgetProgressIcon
-          header="385"
-          text="Active Cases"
+          header="25"
+          text="Completed Meetings"
           color="gradient-success"
           inverse
         >
           <CIcon name="cil-userFollow" height="36"/>
         </CWidgetProgressIcon>
         <CWidgetProgressIcon
-          header="1238"
+          header="20"
           text="Facilities"
           color="gradient-warning"
           inverse
@@ -83,7 +86,7 @@ const Dashboard = () => {
           <CIcon name="cil-basket" height="36"/>
         </CWidgetProgressIcon>
         <CWidgetProgressIcon
-          header="280"
+          header="15"
           text="Care Insights"
           color="gradient-primary"
           inverse
@@ -91,8 +94,8 @@ const Dashboard = () => {
           <CIcon name="cil-chartPie" height="36"/>
         </CWidgetProgressIcon>
         <CWidgetProgressIcon
-          header="5250"
-          text="Insurance Code"
+          header="50"
+          text="Care Plans"
           color="gradient-danger"
           inverse
         >
